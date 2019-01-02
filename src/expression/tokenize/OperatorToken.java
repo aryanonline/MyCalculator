@@ -25,4 +25,9 @@ public class OperatorToken extends Token{
     public Operator getOperator() {
         return operator;
     }
+
+    @Override
+    public String toString() {
+        return operator.getSymbol();
+    }
 }

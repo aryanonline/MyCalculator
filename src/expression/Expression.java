@@ -4,12 +4,14 @@ import expression.function.Functions;
 import expression.tokenize.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Stack;
 
 public class Expression {
 
     private final Token[] tokens;
-
+    private boolean _DEBUG = true;
     private final Map<String, Double> variables;
 
     Expression(final Token[] tokens) {
@@ -26,7 +28,8 @@ public class Expression {
     }
 
     public double evaluate() {
-        final ArrayStack output = new ArrayStack();
+        final Stack<Double> output = new Stack<>();
+        if(_DEBUG) System.out.println("Evaluating: ====");
         for (Token t : tokens) {
             if (t.getType() == Token.TOKEN_NUMBER) {
                 output.push(((NumberToken) t).getValue());
@@ -65,10 +68,21 @@ public class Expression {
                 }
                 output.push(func.getFunction().apply(args));
             }
+
+            if(_DEBUG) System.out.println("output: " + getAsStringArray(output));
         }
         if (output.size() > 1) {
             throw new IllegalArgumentException("Invalid number of items in the output queue. Might be caused by an invalid number of arguments for a function.");
         }
         return output.pop();
+    }
+
+    private static String getAsStringArray(Stack<Double> tokens){
+        StringBuilder stb = new StringBuilder();
+        for (double t1 : tokens) {
+            stb.append(String.valueOf(t1)).append(", ");
+        }
+
+        return stb.toString();
     }
 }

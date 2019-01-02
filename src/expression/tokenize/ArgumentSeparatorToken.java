@@ -10,4 +10,9 @@ class ArgumentSeparatorToken extends Token {
     ArgumentSeparatorToken() {
         super(Token.TOKEN_SEPARATOR);
     }
+
+    @Override
+    public String toString() {
+        return ",";
+    }
 }

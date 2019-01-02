@@ -6,14 +6,14 @@ public class ParserTest {
     public static void main(String[] args) {
         System.out.println("==== General Equation ====");
         generalEquation();
-        System.out.println("==== Quadratic Equation ====");
-        testQuadratic();
-        System.out.println("====Power====");
-        Power();
+        //System.out.println("==== Quadratic Equation ====");
+        //testQuadratic();
+        //System.out.println("====Power====");
+        //Power();
     }
 
     private static void generalEquation() {
-        Expression e = new ExpressionBuilder("(-x+4)*(y+3)")
+        Expression e = new ExpressionBuilder("2+6*(8-3)")
                 .variables("x", "y")
                 .build()
                 .setVariable("x", 6)

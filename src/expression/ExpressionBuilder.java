@@ -15,7 +15,7 @@ import java.util.*;
 public class ExpressionBuilder {
 
     private final String expression;
-
+    private static final boolean _DEBUG = true;
     private final Set<String> variableNames;
 
     /**
@@ -79,6 +79,7 @@ public class ExpressionBuilder {
         List<Token> tokens = null;
         try {
             tokens = tokenizer.tokenize(expression);
+            if(_DEBUG) System.out.println("Tokens from Tokenizer: " + tokens);
         }
         catch (IOException | IllegalArgumentException e1){
             System.out.println(e1.toString());
@@ -88,6 +89,7 @@ public class ExpressionBuilder {
             throw new IllegalArgumentException("Empty expression cannot be evaluated.");
         }
 
+        if(_DEBUG) System.out.println("Looping tokens to create RPN: ==== ");
         for(Token token: tokens){
             switch (token.getType()) {
                 case Token.TOKEN_NUMBER:
@@ -135,9 +137,14 @@ public class ExpressionBuilder {
                 default:
                     throw new IllegalArgumentException("Unknown Token type encountered. This should not happen");
             }
+
+            if(_DEBUG){
+                System.out.println("output: " + getAsStringArray(output));
+                System.out.println("stack: " + getAsStringArray(stack));
+            }
         }
 
-
+        if(_DEBUG) System.out.println("Rearranging output list for evaluation: ==== ");
         while (!stack.empty()) {
             Token t = stack.pop();
             if (t.getType() == Token.TOKEN_PARENTHESES_CLOSE || t.getType() == Token.TOKEN_PARENTHESES_OPEN) {
@@ -145,7 +152,19 @@ public class ExpressionBuilder {
             } else {
                 output.add(t);
             }
+            if(_DEBUG)
+                System.out.println("output: " + getAsStringArray(output));
         }
         return output.toArray(new Token[output.size()]);
+    }
+
+
+    private static String getAsStringArray(List<Token> tokens){
+        StringBuilder stb = new StringBuilder();
+        for (Token t1 : tokens) {
+            stb.append(t1.toString()).append(", ");
+        }
+
+        return stb.toString();
     }
 }

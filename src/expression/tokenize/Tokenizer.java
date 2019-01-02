@@ -46,7 +46,6 @@ public class Tokenizer {
                 default:  // expression.operator
                     xToken = String.valueOf((char) tokenizer.ttype);
                     if( Operator.contains(xToken.charAt(0))){
-                        //Sin(-5), 4*-5, 6,-5
                         if(lastToken.getType()==2 || lastToken.getType()==4 || lastToken.getType()==7){
                             tokens.add(new OperatorToken(Operators.getBuiltinOperator(xToken.charAt(0), 1)));
                             lastToken = new OperatorToken(Operators.getBuiltinOperator(xToken.charAt(0), 1));
