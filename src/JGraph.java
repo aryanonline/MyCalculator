@@ -3,8 +3,8 @@ import java.util.*;
 
 public class JGraph extends JPanel{
     private String graphTitle;
-    private double[] xAxis;
-    private double[] yAxis;
+    private Double[] xAxis = new Double[0];
+    private Double[] yAxis = new Double[0];
 
     private Map<String, JDataSeries> dSource = new HashMap<>();
 
@@ -12,7 +12,8 @@ public class JGraph extends JPanel{
         graphTitle=grphTitle;
         for(JDataSeries s: dataSource){
             if(xAxis.length <= 0){
-                calculateAxis()
+                xAxis = calculateAxis(s.getLowerBoundX(), s.getUpperBoundX(), 10);
+                yAxis = calculateAxis(s.getLowerBoundY(), s.getUpperBoundY(), 10);
             }
             dSource.put(s.getSeriesName(), s);
         }
@@ -21,6 +22,10 @@ public class JGraph extends JPanel{
     public JGraph(String grphTitle, JDataSeries series){
         graphTitle=grphTitle;
         dSource.put(series.getSeriesName(), series);
+        if(xAxis.length <= 0){
+            xAxis = calculateAxis(series.getLowerBoundX(), series.getUpperBoundX(), 10);
+            yAxis = calculateAxis(series.getLowerBoundY(), series.getUpperBoundY(), 10);
+        }
     }
 
     public JGraph(String grphTitle){
@@ -59,6 +64,6 @@ public class JGraph extends JPanel{
             if(val>ub) break;
         }
 
-        result.toArray();
+        return result.toArray(new Double[0]);
     }
 }

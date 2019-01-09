@@ -1,8 +1,5 @@
 import java.awt.*;
 
-/**
- * Created by manis on 2018-12-25.
- */
 public class TestCalcGUI {
     public static void main(String[] args){
         SimpleCalcGUI gui = new SimpleCalcGUI();

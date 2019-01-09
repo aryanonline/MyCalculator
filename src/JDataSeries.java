@@ -11,7 +11,7 @@ public class JDataSeries {
     public JDataSeries(String series){
         this.setSeriesName(series);
         if(getDataset() == null)
-            dataset = new TreeSet<>();
+            dataset = new HashSet<>();
     }
 
     public void add(double x, double y){

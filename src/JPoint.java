@@ -1,4 +1,4 @@
-public class JPoint {
+public class JPoint implements Comparable<JPoint>{
     private double _x;
     private double _y;
 
@@ -26,5 +26,13 @@ public class JPoint {
 
     public void setY(double _y) {
         this._y = _y;
+    }
+
+    @Override
+    public int compareTo(JPoint o) {
+        if(_x == o.getX() && _y == o.getY())
+            return 1;
+        else
+            return -1;
     }
 }
