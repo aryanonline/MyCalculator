@@ -6,16 +6,18 @@ import java.awt.*;
 public class CartesianPanel extends JPanel {
     // x-axis coord constants
     public static final int X_AXIS_FIRST_X_COORD = 50;
+    public static final int X_AXIS_ORIGIN_X_COORD = 200;
     public static final int X_AXIS_SECOND_X_COORD = 600;
-    public static final int X_AXIS_Y_COORD = 600;
+    public static final int X_AXIS_Y_COORD = 400;
 
     // y-axis coord constants
     public static final int Y_AXIS_FIRST_Y_COORD = 50;
     public static final int Y_AXIS_SECOND_Y_COORD = 600;
-    public static final int Y_AXIS_X_COORD = 50;
+    public static final int Y_AXIS_ORIGIN_COORD = 400;
+    public static final int Y_AXIS_X_COORD = 200;
 
     //arrows of axis are represented with "hypotenuse" of a triangle
-    // now we define length of cachet's of that triangle
+    // now we define length of sides of that triangle
     public static final int FIRST_LENGHT = 10;
     public static final int SECOND_LENGHT = 5;
 
@@ -50,6 +52,16 @@ public class CartesianPanel extends JPanel {
                 X_AXIS_Y_COORD + SECOND_LENGHT,
                 X_AXIS_SECOND_X_COORD, X_AXIS_Y_COORD);
 
+        // MS: negative x-axis arrow
+        g2.drawLine(X_AXIS_FIRST_X_COORD + FIRST_LENGHT,
+                X_AXIS_Y_COORD + SECOND_LENGHT,
+                X_AXIS_FIRST_X_COORD, X_AXIS_Y_COORD);
+        // MS: negative x-axis arrow
+        g2.drawLine(X_AXIS_FIRST_X_COORD + FIRST_LENGHT,
+                X_AXIS_Y_COORD - SECOND_LENGHT,
+                X_AXIS_FIRST_X_COORD, X_AXIS_Y_COORD);
+
+
         // y-axis arrow
         g2.drawLine(Y_AXIS_X_COORD - SECOND_LENGHT,
                 Y_AXIS_FIRST_Y_COORD + FIRST_LENGHT,
@@ -58,19 +70,36 @@ public class CartesianPanel extends JPanel {
                 Y_AXIS_FIRST_Y_COORD + FIRST_LENGHT,
                 Y_AXIS_X_COORD, Y_AXIS_FIRST_Y_COORD);
 
+        // MS: negative y-axis arrow
+        g2.drawLine(Y_AXIS_X_COORD - SECOND_LENGHT,
+                Y_AXIS_SECOND_Y_COORD - FIRST_LENGHT,
+                Y_AXIS_X_COORD, Y_AXIS_SECOND_Y_COORD);
+        g2.drawLine(Y_AXIS_X_COORD + SECOND_LENGHT,
+                Y_AXIS_SECOND_Y_COORD - FIRST_LENGHT,
+                Y_AXIS_X_COORD, Y_AXIS_SECOND_Y_COORD);
+
+
         // draw origin Point
         g2.fillOval(
-                X_AXIS_FIRST_X_COORD - (ORIGIN_COORDINATE_LENGHT / 2),
-                Y_AXIS_SECOND_Y_COORD - (ORIGIN_COORDINATE_LENGHT / 2),
+                X_AXIS_ORIGIN_X_COORD - (ORIGIN_COORDINATE_LENGHT / 2),
+                Y_AXIS_ORIGIN_COORD - (ORIGIN_COORDINATE_LENGHT / 2),
                 ORIGIN_COORDINATE_LENGHT, ORIGIN_COORDINATE_LENGHT);
 
-        // draw text "X" and draw text "Y"
+        // MS: draw text "-X" and draw text "-Y"
+        g2.drawString("-X", X_AXIS_FIRST_X_COORD,
+                X_AXIS_Y_COORD + AXIS_STRING_DISTANCE);
+        g2.drawString("-Y", Y_AXIS_X_COORD - AXIS_STRING_DISTANCE,
+                Y_AXIS_SECOND_Y_COORD + AXIS_STRING_DISTANCE / 2);
+
+        // MS: draw text "X" and draw text "Y"
         g2.drawString("X", X_AXIS_SECOND_X_COORD - AXIS_STRING_DISTANCE / 2,
                 X_AXIS_Y_COORD + AXIS_STRING_DISTANCE);
         g2.drawString("Y", Y_AXIS_X_COORD - AXIS_STRING_DISTANCE,
                 Y_AXIS_FIRST_Y_COORD + AXIS_STRING_DISTANCE / 2);
-        g2.drawString("(0, 0)", X_AXIS_FIRST_X_COORD - AXIS_STRING_DISTANCE,
-                Y_AXIS_SECOND_Y_COORD + AXIS_STRING_DISTANCE);
+
+        //draw text origin (0, 0)
+        /*g2.drawString("(0, 0)", X_AXIS_ORIGIN_X_COORD - AXIS_STRING_DISTANCE,
+                Y_AXIS_ORIGIN_COORD + AXIS_STRING_DISTANCE);*/
 
         // numerate axis
         int xCoordNumbers = 10;
@@ -86,7 +115,7 @@ public class CartesianPanel extends JPanel {
                     X_AXIS_Y_COORD - SECOND_LENGHT,
                     X_AXIS_FIRST_X_COORD + (i * xLength),
                     X_AXIS_Y_COORD + SECOND_LENGHT);
-            g2.drawString(Integer.toString(i),
+            g2.drawString(Integer.toString(i-3),
                     X_AXIS_FIRST_X_COORD + (i * xLength) - 3,
                     X_AXIS_Y_COORD + AXIS_STRING_DISTANCE);
         }
