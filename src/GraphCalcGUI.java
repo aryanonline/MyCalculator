@@ -22,14 +22,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class GraphCalcGUI extends JFrame {
     private HashSet<String> workingGraphList = new HashSet<String>();
     private HashSet<String> plottedGraphList = new HashSet<String>();
 
     private JPanel jPnlSetPlotter = new JPanel(new BorderLayout());
-    private ChartPanel jPnlChartPanel;
-    JFreeChart chart;
+    private CCSystem jPnlChartPanel;
 
     private JButton jBtnZoomIn = new JButton("");
     private JButton jBtnZoomOut = new JButton("");
@@ -38,7 +38,6 @@ public class GraphCalcGUI extends JFrame {
     private JButton jBtnDelete = new JButton("X");
     private JButton jBtnClear = new JButton("");
     private JButton jBtnIntersect = new JButton("");
-
 
     private JComboBox jCbFunctionTypes = new JComboBox();
     private JComboBox jCbSavedFunctions = new JComboBox();
@@ -49,7 +48,11 @@ public class GraphCalcGUI extends JFrame {
     private JTextField jTxtUpperBound = new JTextField("");
     private JTextField jTxtPoints = new JTextField("");
     private final List<XYSeries> equations = new ArrayList<>();
+    private final List<JDataSeries> equations2 = new ArrayList<>();
+    private final JGraph datasource = new JGraph("Test");
     private final XYSeriesCollection chartData = new XYSeriesCollection();
+
+    private static final Color[] graphColors = { Color.RED, Color.BLUE, Color.GREEN, Color.DARK_GRAY, Color.ORANGE, Color.PINK };
 
     public GraphCalcGUI(){
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -80,7 +83,7 @@ public class GraphCalcGUI extends JFrame {
                 //Only interested in selection change event
                 if(e.getStateChange()==ItemEvent.SELECTED) {
                     if(jCbSavedFunctions.getSelectedIndex()!=0) {
-                       loadSavedItem(jCbSavedFunctions.getItemAt(jCbSavedFunctions.getSelectedIndex()).toString());
+                        loadSavedItem(jCbSavedFunctions.getItemAt(jCbSavedFunctions.getSelectedIndex()).toString());
                     }
                 }
                 else{
@@ -181,6 +184,11 @@ public class GraphCalcGUI extends JFrame {
         setVisible(true);
     }
 
+    private Color getRandomColor(){
+        int[] x = ThreadLocalRandom.current().ints(0, 5).distinct().limit(5).toArray();
+        return graphColors[x[0]];
+    }
+
     private void plotGraph(int index) {
         double valA = Double.parseDouble(jTxtA.getText());
         double valB = Double.parseDouble(jTxtB.getText());
@@ -228,19 +236,22 @@ public class GraphCalcGUI extends JFrame {
 
         int i = 0;
         int j = equations.size();
-        XYSeries eq = new XYSeries("E"+j);
+        JDataSeries eq1 = new JDataSeries("E" + j, getRandomColor());
         for (Double d : list) {
-            eq.add(i++, d);
+            eq1.add(i++, d);
         }
 
-        equations.add(eq);
+        equations2.add(eq1);
 
-        chartData.removeAllSeries();
+        for(JDataSeries js: equations2){
+            jPnlChartPanel.addSeries(js);
+        }
+        /*chartData.removeAllSeries();
         for(XYSeries s: equations){
             chartData.addSeries(s);
         }
 
-        plottedGraphList.add(stringExpression.toString());
+        plottedGraphList.add(stringExpression.toString());*/
 
         revalidate();
     }
@@ -382,24 +393,9 @@ public class GraphCalcGUI extends JFrame {
         jPnlSetPlotter.add(p2, BorderLayout.SOUTH);
     }
 
-    private ChartPanel createChartPanel(){
-        //Chart Panel Settings
-        chart = ChartFactory.createXYLineChart(
-                "Equation Chart", "X", "F(x)", chartData);
-        XYPlot xyPlot = (XYPlot) chart.getPlot();
-        xyPlot.setRangePannable(true);
-        xyPlot.setDomainPannable(true);
-        /* xyPlot.setDomainCrosshairVisible(true);
-        xyPlot.setRangeCrosshairVisible(true);
-        NumberAxis domain = (NumberAxis) xyPlot.getDomainAxis();
-        domain.setRange(-100.00, 100.00);
-        domain.setTickUnit(new NumberTickUnit(5.0));
-        domain.setVerticalTickLabels(true);
-        NumberAxis range = (NumberAxis) xyPlot.getRangeAxis();
-        range.setRange(-100.00, 100.00);
-        range.setTickUnit(new NumberTickUnit(5.0));*/
-
-        return new ChartPanel(chart);
+    private CCSystem createChartPanel(){
+        jPnlChartPanel = new CCSystem(0.0, 0.0, 10.0, 10.0);
+        return jPnlChartPanel;
     }
 
     private void clearSettings(){
@@ -411,14 +407,14 @@ public class GraphCalcGUI extends JFrame {
         jTxtPoints.setText("");
     }
 
-    private void zoomChartAxis(ChartPanel cp, boolean increase){
-        int width = cp.getMaximumDrawWidth() - cp.getMinimumDrawWidth();
+    private void zoomChartAxis(CCSystem cp, boolean increase){
+        /*int width = cp.getMaximumDrawWidth() - cp.getMinimumDrawWidth();
         int height = cp.getMaximumDrawHeight() - cp.getMinimumDrawWidth();
         if(increase){
             cp.zoomInBoth(width/5, height/5);
         }else{
             cp.zoomOutBoth(width/5, height/5);
-        }
+        }*/
 
     }
 

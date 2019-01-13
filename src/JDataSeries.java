@@ -1,15 +1,18 @@
+import java.awt.*;
 import java.util.*;
 
 public class JDataSeries {
     private String seriesName;
+    private Color seriesColor;
     private Set<JPoint> dataset;
     private double lowerBoundX;
     private double upperBoundX;
     private double lowerBoundY;
     private double upperBoundY;
 
-    public JDataSeries(String series){
+    public JDataSeries(String series, Color gColor){
         this.setSeriesName(series);
+        this.seriesColor=gColor;
         if(getDataset() == null)
             dataset = new HashSet<>();
     }
@@ -42,6 +45,9 @@ public class JDataSeries {
         this.seriesName = seriesName;
     }
 
+    public Color getSeriesColor() {
+        return seriesColor;
+    }
 
     public double getLowerBoundX() {
         return lowerBoundX;
