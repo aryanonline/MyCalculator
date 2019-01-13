@@ -13,11 +13,6 @@ public final class NumberToken extends Token {
         super(TOKEN_NUMBER);
         this.value = value;
     }
-
-    NumberToken(final char[] expression, final int offset, final int len) {
-        this(Double.parseDouble(String.valueOf(expression, offset, len)));
-    }
-
     /**
      * Get the value of the number
      */

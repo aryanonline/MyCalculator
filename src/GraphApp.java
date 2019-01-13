@@ -28,7 +28,7 @@ public class GraphApp extends JFrame {
     String se ="deba";
 
     public GraphApp(){
-
+        //setting the components for graphing
         setTitle("Graph App");
         setSize(900,700);
         String[] graphs = {"select..","parabola","ax^2+bx+c","ax^3","y=mx","y=mx+c","sin(x)","cos(x)","tan(x)","sinc function","signum(x)","X-graph","cubic function","sin+cos unequal amp","sin^3","cos^3","sin^3+cos^3","Amplitude Modulation"};
@@ -44,7 +44,7 @@ public class GraphApp extends JFrame {
         add(cb1);
         cb1.setEditable(true);
 
-        setLayout(null); //add it its very important otherwise Combo Box will occupy the whole screen.
+        setLayout(null); //so combo box does not occupy the whole screen.
 
         setVisible(true);
         setResizable(false);
@@ -56,7 +56,7 @@ public class GraphApp extends JFrame {
 
     }
 
-
+    //Use of paint component to draw the lines for the graph  (Verify with dad today)
     public void paint(Graphics g){
         g.setColor(Color.BLACK);
         g.drawString("Design by ..", 700, 400);
@@ -241,7 +241,6 @@ public class GraphApp extends JFrame {
                 by = y-300;
                 ax++;
 
-                // by = (int) (40*(1+1*Math.cos(.2*ax/3.14))*Math.cos(ax/3.14)+40*(40*Math.sin(.2*ax/3.14))/ax); // AM+sinc(x) function
                 x=300+ax;
                 y=300-by;
 

@@ -33,7 +33,7 @@ public abstract class Operator {
     public static final int PRECEDENCE_UNARY_PLUS = PRECEDENCE_UNARY_MINUS;
 
     /**
-     * The set of allowed expression.expression.operator chars
+     * The set of allowed expression operators
      */
     public static final char[] ALLOWED_OPERATOR_CHARS = { '+', '-', '*', '/', '%', '^', '!', '#','§', '$', '&', ';', ':', '~', '<', '>', '|', '='};
 
@@ -42,6 +42,9 @@ public abstract class Operator {
     protected final String symbol;
     protected final int precedence;
 
+    /*
+       checking if an operator is valid
+     */
     public static boolean contains(char c){
         boolean found=false;
         for(char q: ALLOWED_OPERATOR_CHARS){

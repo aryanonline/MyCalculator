@@ -23,7 +23,7 @@ public final class CalcUtils {
         panel.add(item, c);
     }
 
-    //get buffered Image
+    //Get buffered Image
     public static ImageIcon getTransparentIcon(String fileName, int width, int height){
         BufferedImage bf;
         ImageIcon ic = null;
@@ -38,7 +38,7 @@ public final class CalcUtils {
 
         return ic;
     }
-
+    //checking an input is a number
     public static boolean isNumeric(String strNum) {
         try {
             double d = Double.parseDouble(strNum);

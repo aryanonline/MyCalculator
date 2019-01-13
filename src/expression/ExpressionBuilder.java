@@ -88,7 +88,7 @@ public class ExpressionBuilder {
         if(tokens == null){
             throw new IllegalArgumentException("Empty expression cannot be evaluated.");
         }
-
+        //Adding any numericaal values to the output ArrayList and any operators or functions to the stack
         if(_DEBUG) System.out.println("Looping tokens to create RPN: ==== ");
         for(Token token: tokens){
             switch (token.getType()) {
@@ -99,66 +99,86 @@ public class ExpressionBuilder {
                 case Token.TOKEN_FUNCTION:
                     stack.add(token);
                     break;
+                    //if a token separator was used keep adding the separator to the output until a open parenthesis is found
                 case Token.TOKEN_SEPARATOR:
                     while (!stack.empty() && stack.peek().getType() != Token.TOKEN_PARENTHESES_OPEN) {
                         output.add(stack.pop());
                     }
+                    //if the user enters any type of illegal separators
                     if (stack.empty() || stack.peek().getType() != Token.TOKEN_PARENTHESES_OPEN) {
                         throw new IllegalArgumentException("Misplaced expression.function separator ',' or mismatched parentheses");
                     }
                     break;
+                    //check if the Token is an opperator
                 case Token.TOKEN_OPERATOR:
+                    //while the stack is an the peek is an operator
                     while (!stack.empty() && stack.peek().getType() == Token.TOKEN_OPERATOR) {
+                        //down cast o1 to an operator token
                         OperatorToken o1 = (OperatorToken) token;
+                        //downcast o2 to an operator token
                         OperatorToken o2 = (OperatorToken) stack.peek();
+                        //check the number of operands for each operator
                         if (o1.getOperator().getNumOperands() == 1 && o2.getOperator().getNumOperands() == 2) {
                             break;
+                            //check which operator has an higher precedence value (ensuring that the expression will be evaluated using the rules of BEDMAS)
                         } else if ((o1.getOperator().isLeftAssociative() && o1.getOperator().getPrecedence() <= o2.getOperator().getPrecedence())
                                 || (o1.getOperator().getPrecedence() < o2.getOperator().getPrecedence())) {
+                            //if the precedence is greater add the operator intitially within the stack to the output array
                             output.add(stack.pop());
                         }else {
                             break;
                         }
                     }
+                    //Push the current operator token into the stack
                     stack.push(token);
                     break;
+                    //check if the Token is an open parenthesis
                 case Token.TOKEN_PARENTHESES_OPEN:
+                    //add the parenthesis into the stack
                     stack.push(token);
                     break;
+                    //check if the token is a close parenthesis
                 case Token.TOKEN_PARENTHESES_CLOSE:
+                    //add all the elements in the stack until the parenthesis open
                     while (stack.peek().getType() != Token.TOKEN_PARENTHESES_OPEN) {
                         output.add(stack.pop());
                     }
+                    // remove the parenthesis open
                     stack.pop();
+                    //if the stack has a function add the function to the output array
                     if (!stack.isEmpty() && stack.peek().getType() == Token.TOKEN_FUNCTION) {
                         output.add(stack.pop());
                     }
                     break;
                 default:
+                    //throw an error if nothing can be performed
                     throw new IllegalArgumentException("Unknown Token type encountered. This should not happen");
             }
-
+            //debugging to check if everything is working fine
             if(_DEBUG){
                 System.out.println("output: " + getAsStringArray(output));
                 System.out.println("stack: " + getAsStringArray(stack));
             }
         }
-
+        //Confirm with Dad on this line of code
         if(_DEBUG) System.out.println("Rearranging output list for evaluation: ==== ");
+        //error checking for any invalid inputs
         while (!stack.empty()) {
             Token t = stack.pop();
             if (t.getType() == Token.TOKEN_PARENTHESES_CLOSE || t.getType() == Token.TOKEN_PARENTHESES_OPEN) {
                 throw new IllegalArgumentException("Mismatched parentheses detected. Please check the expression");
             } else {
+                //add the tokens into the output
                 output.add(t);
             }
+            //debugging to check if everything is working fine
             if(_DEBUG)
                 System.out.println("output: " + getAsStringArray(output));
         }
         return output.toArray(new Token[output.size()]);
     }
 
-
+    // Method is called when debugging
     private static String getAsStringArray(List<Token> tokens){
         StringBuilder stb = new StringBuilder();
         for (Token t1 : tokens) {
