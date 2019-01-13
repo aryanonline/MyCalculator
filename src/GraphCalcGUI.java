@@ -49,8 +49,6 @@ public class GraphCalcGUI extends JFrame {
     private JTextField jTxtUpperBound = new JTextField("");
     private JTextField jTxtPoints = new JTextField("");
     private final List<XYSeries> equations = new ArrayList<>();
-    private final List<JDataSeries> equations2 = new ArrayList<>();
-    private final JGraph datasource = new JGraph("Test");
     private final XYSeriesCollection chartData = new XYSeriesCollection();
 
     public GraphCalcGUI(){
@@ -231,23 +229,18 @@ public class GraphCalcGUI extends JFrame {
         int i = 0;
         int j = equations.size();
         XYSeries eq = new XYSeries("E"+j);
-        JDataSeries eq1 = new JDataSeries("E" + j);
         for (Double d : list) {
             eq.add(i++, d);
-            eq1.add(i++, d);
         }
 
         equations.add(eq);
-        equations2.add(eq1);
 
-        JGraph jgh = new JGraph("Test1", eq1);
-
-        /*chartData.removeAllSeries();
+        chartData.removeAllSeries();
         for(XYSeries s: equations){
             chartData.addSeries(s);
         }
 
-        plottedGraphList.add(stringExpression.toString());*/
+        plottedGraphList.add(stringExpression.toString());
 
         revalidate();
     }

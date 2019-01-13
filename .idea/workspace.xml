@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bf97f8f-230a-4784-90fa-c4043d8073f1" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/MyCalculator/cartesian/CartesianPanel.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GraphCalcGUI.java" afterPath="$PROJECT_DIR$/src/GraphCalcGUI.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,8 +31,8 @@
       <file leaf-file-name="GraphCalcGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GraphCalcGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6001">
-              <caret line="380" column="18" lean-forward="true" selection-start-line="380" selection-start-column="18" selection-end-line="380" selection-end-column="18" />
+            <state relative-caret-position="251">
+              <caret line="237" column="0" lean-forward="false" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -62,13 +62,13 @@
         <option value="$PROJECT_DIR$/src/JPoint.java" />
         <option value="$PROJECT_DIR$/src/JDataSeries.java" />
         <option value="$PROJECT_DIR$/lib/jfreechart-1.0.19.jar!/org/jfree/chart/ChartPanel.class" />
-        <option value="$PROJECT_DIR$/src/GraphCalcGUI.java" />
         <option value="$PROJECT_DIR$/src/JGraph.java" />
         <option value="$PROJECT_DIR$/src/cartesian/CaresianPanel.java" />
         <option value="$PROJECT_DIR$/src/CartesianFrame.java" />
         <option value="$PROJECT_DIR$/src/cartesian/CartesianFrame.java" />
         <option value="$PROJECT_DIR$/src/cartesian/TestCartesian.java" />
         <option value="$PROJECT_DIR$/src/cartesian/CartesianPanel.java" />
+        <option value="$PROJECT_DIR$/src/GraphCalcGUI.java" />
       </list>
     </option>
   </component>
@@ -578,10 +578,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10629000" />
+    <option name="totallyTimeSpent" value="10923000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -680,14 +680,8 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/GraphCalcGUI.java</url>
-          <line>230</line>
+          <line>228</line>
           <properties />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/GraphCalcGUI.java</url>
-          <line>242</line>
-          <properties />
-          <option name="timeStamp" value="3" />
         </line-breakpoint>
       </breakpoints>
       <option name="time" value="4" />
@@ -1193,8 +1187,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GraphCalcGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6001">
-          <caret line="380" column="18" lean-forward="true" selection-start-line="380" selection-start-column="18" selection-end-line="380" selection-end-column="18" />
+        <state relative-caret-position="251">
+          <caret line="237" column="0" lean-forward="false" selection-start-line="237" selection-start-column="0" selection-end-line="237" selection-end-column="0" />
           <folding />
         </state>
       </provider>
