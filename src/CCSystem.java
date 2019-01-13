@@ -245,24 +245,34 @@ public class CCSystem extends JPanel {
         for (int i = idx; i <= end; i++) drawYGridLine(g2d, i*vbu);
     }
 
-    public void addSeries(JDataSeries series){
-        dSource.put(series.getSeriesName(), series);
+    public void addSeries(JDataSeries ... series){
+        for(JDataSeries sr : series) {
+            dSource.put(sr.getSeriesName(), sr);
+        }
     }
 
     public void removeSeries(String series){
         dSource.remove(series);
     }
 
+    public void clearAll(){
+        dSource.clear();
+        repaint();
+    }
+
+    public int getDataSourceSize(){
+        return dSource.size();
+    }
+
     public void drawPoints(Graphics2D g2d){
         g2d.setStroke(new BasicStroke(1f));
-
         for(JDataSeries ds: dSource.values()){
             g2d.setPaint(ds.getSeriesColor());
             List<JPoint> pts = new ArrayList(ds.getDataset());
             for (int i=0; i<pts.size()-1; i++){
                 int x1 = translateX(pts.get(i).getX());
-                int x2 = translateX(pts.get(i+1).getX());
                 int y1 = translateY(pts.get(i).getY());
+                int x2 = translateX(pts.get(i+1).getX());
                 int y2 = translateY(pts.get(i+1).getY());
                 Shape l = new Line2D.Double(x1, y1, x2, y2);
                 g2d.draw(l);
@@ -368,7 +378,7 @@ public class CCSystem extends JPanel {
         int end = (int) Math.floor(maxX / vbuX.doubleValue());
 
         for (int i = idx; i <= end; i++) drawXUnitLine(g2d,
-                BigDecimal.valueOf(i).multiply(vbuX, prec));
+                BigDecimal.valueOf(i).multiply(vbuX));
     }
 
     /* Draw a single unit line on the y-axis at a given value. */
@@ -400,7 +410,7 @@ public class CCSystem extends JPanel {
 
 
         for (int i = idx; i <= end; i++) drawYUnitLine(g2d,
-                BigDecimal.valueOf(i).multiply(vbuY, prec));
+                BigDecimal.valueOf(i).multiply(vbuY));
     }
 
     private BigDecimal findScale(double num) {
@@ -415,9 +425,9 @@ public class CCSystem extends JPanel {
 
         /* Don't need more than double precision here */
         double quot = num / scale.doubleValue();
-        if (quot > 5.0) return scale.multiply(BigDecimal.TEN, prec);
-        if (quot > 2.0) return scale.multiply(BigDecimal.valueOf(5), prec);
-        if (quot > 1.0) return scale.multiply(BigDecimal.valueOf(2), prec);
+        if (quot > 5.0) return scale.multiply(BigDecimal.TEN);
+        if (quot > 2.0) return scale.multiply(BigDecimal.valueOf(5));
+        if (quot > 1.0) return scale.multiply(BigDecimal.valueOf(2));
         else return scale;
     }
 
@@ -514,12 +524,14 @@ public class CCSystem extends JPanel {
         origin = translate(origin2d);
     }
 
-    private void zoom(double zoomX, double zoomY){
+    public void zoom(double zoomX, double zoomY){
         minX -= zoomX;
         maxX += zoomX;
         minY -= zoomY;
         maxY += zoomY;
     }
+
+
 
     class mouseWheelListener implements MouseWheelListener {
 

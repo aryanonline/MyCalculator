@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2bf97f8f-230a-4784-90fa-c4043d8073f1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/CCSystem.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyCalculator/JDataSeries.class" afterPath="$PROJECT_DIR$/out/production/MyCalculator/JDataSeries.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/MyCalculator/SimpleCalcGUI.class" afterPath="$PROJECT_DIR$/out/production/MyCalculator/SimpleCalcGUI.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/CCSystem.java" afterPath="$PROJECT_DIR$/src/CCSystem.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GraphCalcGUI.java" afterPath="$PROJECT_DIR$/src/GraphCalcGUI.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/JDataSeries.java" afterPath="$PROJECT_DIR$/src/JDataSeries.java" />
     </list>
@@ -37,7 +34,7 @@
         <entry file="file://$PROJECT_DIR$/src/SimpleCalcGUI.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="287">
-              <caret line="184" column="17" lean-forward="true" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
+              <caret line="184" column="17" lean-forward="false" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -46,9 +43,69 @@
       <file leaf-file-name="GraphCalcGUI.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GraphCalcGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-              <folding />
+            <state relative-caret-position="284">
+              <caret line="393" column="33" lean-forward="true" selection-start-line="393" selection-start-column="33" selection-end-line="393" selection-end-column="33" />
+              <folding>
+                <element signature="class#5206:5380" expanded="false" />
+                <element signature="class#5426:5601" expanded="false" />
+                <element signature="class#5645:5968" expanded="false" />
+                <element signature="class#6013:6616" expanded="false" />
+                <element signature="method#getRandomColor#0;class#GraphCalcGUI#0" expanded="false" />
+                <element signature="method#plotGraph#0;class#GraphCalcGUI#0" expanded="false" />
+                <element signature="method#createDataset#0;class#GraphCalcGUI#0" expanded="false" />
+                <element signature="method#setUI#0;class#GraphCalcGUI#0" expanded="false" />
+                <element signature="method#createChartPanel#0;class#GraphCalcGUI#0" expanded="false" />
+                <element signature="method#clearSettings#0;class#GraphCalcGUI#0" expanded="false" />
+                <element signature="method#loadSavedList#0;class#GraphCalcGUI#0" expanded="false" />
+                <element signature="method#loadSavedItem#0;class#GraphCalcGUI#0" expanded="false" />
+                <element signature="method#readSavedGraphs#0;class#GraphCalcGUI#0" expanded="false" />
+                <element signature="method#saveNewGraph#0;class#GraphCalcGUI#0" expanded="false" />
+                <element signature="method#saveGraph#0;class#GraphCalcGUI#0" expanded="false" />
+                <element signature="method#setLabelDisplay#0;class#GraphCalcGUI#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CCSystem.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/CCSystem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="283">
+              <caret line="526" column="10" lean-forward="false" selection-start-line="526" selection-start-column="10" selection-end-line="526" selection-end-column="10" />
+              <folding>
+                <element signature="docComment;class#CCSystem#0" expanded="false" />
+                <element signature="method#CCSystem#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#drag#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#drawAxes#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#drawGrid#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#drawXGridLine#0;class#CCSystem#0" expanded="false" />
+                <element signature="docComment;method#drawXGridLines#1;class#CCSystem#0" expanded="false" />
+                <element signature="method#drawXGridLines#1;class#CCSystem#0" expanded="false" />
+                <element signature="method#drawYGridLine#0;class#CCSystem#0" expanded="false" />
+                <element signature="docComment;method#drawYGridLines#1;class#CCSystem#0" expanded="false" />
+                <element signature="method#drawYGridLines#1;class#CCSystem#0" expanded="false" />
+                <element signature="method#addSeries#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#drawPoints#0;class#CCSystem#0" expanded="false" />
+                <element signature="e#8816#8845#0" expanded="false" />
+                <element signature="method#drawXUnitLine#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#drawXUnitLines#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#drawYUnitLine#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#drawYUnitLines#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#findScale#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#getNiceGraphics#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#paintComponent#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#translate#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#translate#1;class#CCSystem#0" expanded="false" />
+                <element signature="method#updatePosition#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#zoom#0;class#CCSystem#0" expanded="false" />
+                <element signature="class#mouseWheelListener#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#mouseWheelMoved#0;class#mouseWheelListener#0;class#CCSystem#0" expanded="false" />
+                <element signature="class#mouseListener#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#mousePressed#0;class#mouseListener#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#mouseReleased#0;class#mouseListener#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#mouseDragged#0;class#mouseListener#0;class#CCSystem#0" expanded="false" />
+                <element signature="method#mouseMoved#0;class#mouseListener#0;class#CCSystem#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -75,7 +132,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/TestCalcGUI.java" />
         <option value="$PROJECT_DIR$/src/JPoint.java" />
-        <option value="$PROJECT_DIR$/src/JDataSeries.java" />
         <option value="$PROJECT_DIR$/lib/jfreechart-1.0.19.jar!/org/jfree/chart/ChartPanel.class" />
         <option value="$PROJECT_DIR$/src/JGraph.java" />
         <option value="$PROJECT_DIR$/src/cartesian/CaresianPanel.java" />
@@ -84,6 +140,8 @@
         <option value="$PROJECT_DIR$/src/cartesian/TestCartesian.java" />
         <option value="$PROJECT_DIR$/src/cartesian/CartesianPanel.java" />
         <option value="$PROJECT_DIR$/src/SimpleCalcGUI.java" />
+        <option value="$PROJECT_DIR$/src/JDataSeries.java" />
+        <option value="$PROJECT_DIR$/src/CCSystem.java" />
         <option value="$PROJECT_DIR$/src/GraphCalcGUI.java" />
       </list>
     </option>
@@ -594,7 +652,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11054000" />
+    <option name="totallyTimeSpent" value="16423000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
@@ -617,6 +675,7 @@
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25642672" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32974428" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -649,7 +708,6 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32962373" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
     </layout>
@@ -693,7 +751,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="4" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -722,6 +780,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -729,6 +788,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
           <caret line="30" column="0" lean-forward="true" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -781,6 +841,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="132">
           <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -788,6 +849,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="891">
           <caret line="35" column="22" lean-forward="false" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -805,6 +867,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="40" column="36" lean-forward="true" selection-start-line="40" selection-start-column="36" selection-end-line="40" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -819,6 +882,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="13" lean-forward="false" selection-start-line="0" selection-start-column="13" selection-end-line="0" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -826,14 +890,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="49" column="5" lean-forward="false" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CCSystem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1258">
-          <caret line="272" column="4" lean-forward="false" selection-start-line="272" selection-start-column="4" selection-end-line="272" selection-end-column="4" />
           <folding />
         </state>
       </provider>
@@ -872,7 +928,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="109">
           <caret line="57" column="26" lean-forward="false" selection-start-line="57" selection-start-column="26" selection-end-line="57" selection-end-column="26" />
-          <folding />
+          <folding>
+            <element signature="class#5206:5380" expanded="false" />
+            <element signature="class#5426:5601" expanded="false" />
+            <element signature="class#5645:5968" expanded="false" />
+            <element signature="class#6013:6616" expanded="false" />
+            <element signature="method#getRandomColor#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#plotGraph#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#createDataset#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#setUI#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#createChartPanel#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#clearSettings#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#loadSavedList#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#loadSavedItem#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#readSavedGraphs#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#saveNewGraph#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#saveGraph#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#setLabelDisplay#0;class#GraphCalcGUI#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -962,14 +1035,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/JDataSeries.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/CartesianFrame.java" />
     <entry file="file://$PROJECT_DIR$/src/cartesian/TestCartesian.java" />
     <entry file="file://$PROJECT_DIR$/src/cartesian/CartesianFrame.java" />
@@ -985,19 +1050,88 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/JDataSeries.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="367">
+          <caret line="34" column="5" lean-forward="true" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
+          <folding>
+            <element signature="e#1108#1109#0" expanded="true" />
+            <element signature="e#1152#1153#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/SimpleCalcGUI.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="287">
-          <caret line="184" column="17" lean-forward="true" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
+          <caret line="184" column="17" lean-forward="false" selection-start-line="184" selection-start-column="17" selection-end-line="184" selection-end-column="17" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/CCSystem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="526" column="10" lean-forward="false" selection-start-line="526" selection-start-column="10" selection-end-line="526" selection-end-column="10" />
+          <folding>
+            <element signature="docComment;class#CCSystem#0" expanded="false" />
+            <element signature="method#CCSystem#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#drag#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#drawAxes#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#drawGrid#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#drawXGridLine#0;class#CCSystem#0" expanded="false" />
+            <element signature="docComment;method#drawXGridLines#1;class#CCSystem#0" expanded="false" />
+            <element signature="method#drawXGridLines#1;class#CCSystem#0" expanded="false" />
+            <element signature="method#drawYGridLine#0;class#CCSystem#0" expanded="false" />
+            <element signature="docComment;method#drawYGridLines#1;class#CCSystem#0" expanded="false" />
+            <element signature="method#drawYGridLines#1;class#CCSystem#0" expanded="false" />
+            <element signature="method#addSeries#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#drawPoints#0;class#CCSystem#0" expanded="false" />
+            <element signature="e#8816#8845#0" expanded="false" />
+            <element signature="method#drawXUnitLine#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#drawXUnitLines#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#drawYUnitLine#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#drawYUnitLines#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#findScale#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#getNiceGraphics#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#paintComponent#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#translate#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#translate#1;class#CCSystem#0" expanded="false" />
+            <element signature="method#updatePosition#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#zoom#0;class#CCSystem#0" expanded="false" />
+            <element signature="class#mouseWheelListener#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#mouseWheelMoved#0;class#mouseWheelListener#0;class#CCSystem#0" expanded="false" />
+            <element signature="class#mouseListener#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#mousePressed#0;class#mouseListener#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#mouseReleased#0;class#mouseListener#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#mouseDragged#0;class#mouseListener#0;class#CCSystem#0" expanded="false" />
+            <element signature="method#mouseMoved#0;class#mouseListener#0;class#CCSystem#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GraphCalcGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="40" column="0" lean-forward="true" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
-          <folding />
+        <state relative-caret-position="284">
+          <caret line="393" column="33" lean-forward="true" selection-start-line="393" selection-start-column="33" selection-end-line="393" selection-end-column="33" />
+          <folding>
+            <element signature="class#5206:5380" expanded="false" />
+            <element signature="class#5426:5601" expanded="false" />
+            <element signature="class#5645:5968" expanded="false" />
+            <element signature="class#6013:6616" expanded="false" />
+            <element signature="method#getRandomColor#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#plotGraph#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#createDataset#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#setUI#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#createChartPanel#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#clearSettings#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#loadSavedList#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#loadSavedItem#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#readSavedGraphs#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#saveNewGraph#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#saveGraph#0;class#GraphCalcGUI#0" expanded="false" />
+            <element signature="method#setLabelDisplay#0;class#GraphCalcGUI#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

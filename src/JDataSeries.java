@@ -1,10 +1,11 @@
 import java.awt.*;
 import java.util.*;
+import java.util.List;
 
 public class JDataSeries {
     private String seriesName;
     private Color seriesColor;
-    private Set<JPoint> dataset;
+    private List<JPoint> dataset;
     private double lowerBoundX;
     private double upperBoundX;
     private double lowerBoundY;
@@ -14,7 +15,7 @@ public class JDataSeries {
         this.setSeriesName(series);
         this.seriesColor=gColor;
         if(getDataset() == null)
-            dataset = new HashSet<>();
+            dataset = new ArrayList<>();
     }
 
     public void add(double x, double y){
@@ -29,11 +30,11 @@ public class JDataSeries {
         }
     }
 
-    public Set<JPoint> getDataset() {
+    public List<JPoint> getDataset() {
         return dataset;
     }
 
-    public void setDataset(Set<JPoint> dataset) {
+    public void setDataset(List<JPoint> dataset) {
         this.dataset = dataset;
     }
 

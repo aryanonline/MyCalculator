@@ -47,10 +47,6 @@ public class GraphCalcGUI extends JFrame {
     private JTextField jTxtLowerBound = new JTextField("");
     private JTextField jTxtUpperBound = new JTextField("");
     private JTextField jTxtPoints = new JTextField("");
-    private final List<XYSeries> equations = new ArrayList<>();
-    private final List<JDataSeries> equations2 = new ArrayList<>();
-    private final JGraph datasource = new JGraph("Test");
-    private final XYSeriesCollection chartData = new XYSeriesCollection();
 
     private static final Color[] graphColors = { Color.RED, Color.BLUE, Color.GREEN, Color.DARK_GRAY, Color.ORANGE, Color.PINK };
 
@@ -154,8 +150,7 @@ public class GraphCalcGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 clearSettings();
                 plottedGraphList.clear();
-                chartData.removeAllSeries();
-                equations.clear();
+                jPnlChartPanel.clearAll();
                 revalidate();
                 jCbFunctionTypes.setSelectedIndex(0);
             }
@@ -232,35 +227,20 @@ public class GraphCalcGUI extends JFrame {
                 .variable("X")
                 .build();
 
-        list = createDataset(exp);
+        int j = jPnlChartPanel.getDataSourceSize();
+        JDataSeries equation = new JDataSeries("E" + j, getRandomColor());
+        createDataset(exp, equation);
+        jPnlChartPanel.addSeries(equation);
 
-        int i = 0;
-        int j = equations.size();
-        JDataSeries eq1 = new JDataSeries("E" + j, getRandomColor());
-        for (Double d : list) {
-            eq1.add(i++, d);
-        }
-
-        equations2.add(eq1);
-
-        for(JDataSeries js: equations2){
-            jPnlChartPanel.addSeries(js);
-        }
-        /*chartData.removeAllSeries();
-        for(XYSeries s: equations){
-            chartData.addSeries(s);
-        }
-
-        plottedGraphList.add(stringExpression.toString());*/
-
+        plottedGraphList.add(stringExpression.toString());
+        jPnlChartPanel.repaint();
         revalidate();
     }
 
-    private List<Double> createDataset(Expression exp) {
+    private void createDataset(Expression exp, JDataSeries equation) {
         double valLower = Double.parseDouble(jTxtLowerBound.getText());
         double valUpper = Double.parseDouble(jTxtUpperBound.getText());
         double valPoints = Double.parseDouble(jTxtPoints.getText());
-        List<Double> list = new ArrayList<Double>();
 
         double spread = valUpper - valLower;
         double increments = spread/valPoints;
@@ -270,10 +250,8 @@ public class GraphCalcGUI extends JFrame {
             double result = exp.setVariable("X", i).evaluate();
             DecimalFormat formatter = new DecimalFormat("####.##");
             double fmtNum = Double.parseDouble(formatter.format(result));
-            list.add(fmtNum);
+            equation.add(i, fmtNum);
         }
-
-        return list;
     }
 
     private void setUI(){
@@ -408,14 +386,12 @@ public class GraphCalcGUI extends JFrame {
     }
 
     private void zoomChartAxis(CCSystem cp, boolean increase){
-        /*int width = cp.getMaximumDrawWidth() - cp.getMinimumDrawWidth();
-        int height = cp.getMaximumDrawHeight() - cp.getMinimumDrawWidth();
         if(increase){
-            cp.zoomInBoth(width/5, height/5);
+            jPnlChartPanel.zoom(2,2);
         }else{
-            cp.zoomOutBoth(width/5, height/5);
-        }*/
-
+            jPnlChartPanel.zoom(-2,-2);
+        }
+        jPnlChartPanel.repaint();
     }
 
     //load saved equations into combo box that match function type
