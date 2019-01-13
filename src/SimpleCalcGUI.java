@@ -81,8 +81,6 @@ public class SimpleCalcGUI extends JFrame {
             }
         }
 
-        JPanel p1 = new JPanel();
-
 
         JPanel p2 = new JPanel();
         p2.setLayout(new BorderLayout());
@@ -94,11 +92,6 @@ public class SimpleCalcGUI extends JFrame {
         jtaResult.setHorizontalAlignment(JLabel.RIGHT);
         jtaResult.setVerticalAlignment(JLabel.CENTER);
         jtaResult.setPreferredSize(new Dimension(800, 80));
-
-        /*SimpleAttributeSet attrs=new SimpleAttributeSet();
-        StyleConstants.setAlignment(attrs, StyleConstants.ALIGN_RIGHT);
-        StyledDocument doc=(StyledDocument)jtaResult.getDocument();
-        doc.setParagraphAttributes(0,doc.getLength()-1,centre,false);*/
 
         this.getContentPane().add(p2, BorderLayout.NORTH);
         this.getContentPane().add(panel, BorderLayout.CENTER);
@@ -138,6 +131,7 @@ public class SimpleCalcGUI extends JFrame {
         }
     }
 
+    //Creating buttons within calculator
     private void HandleExpression(ActionEvent e){
         JButton btn = (JButton) e.getSource();
         int ItemIndex = (int) btn.getClientProperty("ItemIndex");
@@ -315,6 +309,7 @@ public class SimpleCalcGUI extends JFrame {
         }
     }
 
+    //Allowing the entered expression to be displayed on screen
     public void createTextExpression(){
         textExpression = "";
         for(int i=0; i<tokenArray.size();i++)
@@ -323,13 +318,14 @@ public class SimpleCalcGUI extends JFrame {
         jtaResult.setText(textExpression);
     }
 
+    //adding expression from token array memTokenArray stack. Allows for the expression to be memorised and stored to be used in further evaluations
     public void memorize(){
         memTokenArray.clear();
 
         for(int i=tokenArray.size()-1; i>=0;i--)
             memTokenArray.push(tokenArray.get(i));
     }
-
+    //Recalling the expression that has initially been entered
     public void memRecall(){
         tokenArray.clear();
         textExpression="";
@@ -341,11 +337,11 @@ public class SimpleCalcGUI extends JFrame {
 
         jtaResult.setText(textExpression);
     }
-
+    //clearing the memTokenArray to clear the stored memory
     public void memClear(){
         memTokenArray.clear();
     }
-
+    //Clear everything in calculator
     public void allClear(){
         memTokenArray.clear();
         tokenArray.clear();
@@ -354,9 +350,10 @@ public class SimpleCalcGUI extends JFrame {
         if(is2ndFActive) toggle2NdF();
         jtaResult.setText(textExpression);
     }
-
+    //evaluating the result of the expression
     public void evaluateExpression(){
         try{
+            //text expression is converted into RPN notation and stored within variable exp of type Expression
             Expression exp = new ExpressionBuilder(textExpression).build();
             double d = exp.evaluate();
             jtaResult.setText(String.valueOf(d));

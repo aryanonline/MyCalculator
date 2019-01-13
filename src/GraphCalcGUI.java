@@ -23,6 +23,9 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 
+/*
+Consult about this class with dad
+ */
 public class GraphCalcGUI extends JFrame {
     private HashSet<String> workingGraphList = new HashSet<String>();
     private HashSet<String> plottedGraphList = new HashSet<String>();
@@ -246,19 +249,28 @@ public class GraphCalcGUI extends JFrame {
     }
 
     private List<Double> createDataset(Expression exp) {
+        //Upper domain of the equation
         double valLower = Double.parseDouble(jTxtLowerBound.getText());
+        //lower domain of the equation
         double valUpper = Double.parseDouble(jTxtUpperBound.getText());
+        //The number of points that the graph will consist of
         double valPoints = Double.parseDouble(jTxtPoints.getText());
+
+        //declaration of array list to dtore the evaluated points for each X-Value on the graph
         List<Double> list = new ArrayList<Double>();
 
+        //calculating the the seperation of between the points
         double spread = valUpper - valLower;
         double increments = spread/valPoints;
 
-        //equation.clear();
         for(double i=valLower; i<=valUpper; i += increments){
+            //invoking the evaluate method from expression class to evaluate for each X-value
             double result = exp.setVariable("X", i).evaluate();
+            //Used to convert any value to a two decimal format
             DecimalFormat formatter = new DecimalFormat("####.##");
+            //Converting the result into two decimals and storing it within the variable fmtNum
             double fmtNum = Double.parseDouble(formatter.format(result));
+            //adding converted result within the list
             list.add(fmtNum);
         }
 
@@ -266,9 +278,9 @@ public class GraphCalcGUI extends JFrame {
     }
 
     private void setUI(){
+        //Setting components for the GraphGUI
         JLabel jLblFxType = new JLabel("Select F(x) Type: ");
-        JLabel jLblFx = new JLabel("Select from saved functions : ");
-        JLabel spacer = new JLabel(" ");
+        JLabel jLblFx = new JLabel("Select from saved functions: ");
         JLabel jLblA = new JLabel("A");
         JLabel jLblB = new JLabel("B");
         JLabel jLblC = new JLabel("C");
@@ -389,16 +401,6 @@ public class GraphCalcGUI extends JFrame {
         XYPlot xyPlot = (XYPlot) chart.getPlot();
         xyPlot.setRangePannable(true);
         xyPlot.setDomainPannable(true);
-        /* xyPlot.setDomainCrosshairVisible(true);
-        xyPlot.setRangeCrosshairVisible(true);
-        NumberAxis domain = (NumberAxis) xyPlot.getDomainAxis();
-        domain.setRange(-100.00, 100.00);
-        domain.setTickUnit(new NumberTickUnit(5.0));
-        domain.setVerticalTickLabels(true);
-        NumberAxis range = (NumberAxis) xyPlot.getRangeAxis();
-        range.setRange(-100.00, 100.00);
-        range.setTickUnit(new NumberTickUnit(5.0));*/
-
         return new ChartPanel(chart);
     }
 
@@ -411,6 +413,7 @@ public class GraphCalcGUI extends JFrame {
         jTxtPoints.setText("");
     }
 
+    //zooming in within graph
     private void zoomChartAxis(ChartPanel cp, boolean increase){
         int width = cp.getMaximumDrawWidth() - cp.getMinimumDrawWidth();
         int height = cp.getMaximumDrawHeight() - cp.getMinimumDrawWidth();

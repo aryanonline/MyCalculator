@@ -3,6 +3,7 @@ package expression.function;
  * Class representing the builtin functions available for use in expressions
  */
 public class Functions {
+    //Defined set of functions within scientific calculator
     private static final int INDEX_SIN = 0;
     private static final int INDEX_COS = 1;
     private static final int INDEX_TAN = 2;
@@ -31,9 +32,10 @@ public class Functions {
     private static final int INDEX_ATANH = 25;
     private static final int INDEX_FACT = 26;
 
-
+    //array of abstract to classes to be later on used to assign set of defined functions with their values
     private static final Function[] builtinFunctions = new Function[27];
 
+    //Assigning each functions index with their own set of defined set of methods
     static {
         builtinFunctions[INDEX_SIN] = new Function("sin") {
             @Override
@@ -221,9 +223,7 @@ public class Functions {
     }
 
     /**
-     * Get the builtin expression.expression.function for a given name
-     * @param name te name of the expression.expression.function
-     * @return a Function instance
+     * Get the built in function depending on its name and return the correct set of methods assigned for that function
      */
     public static Function getBuiltinFunction(final String name) {
 

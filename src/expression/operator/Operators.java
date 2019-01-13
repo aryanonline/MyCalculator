@@ -1,6 +1,7 @@
 package expression.operator;
 
 public abstract class Operators {
+    //different operators and their index numbers
     private static final int INDEX_ADDITION = 0;
     private static final int INDEX_SUBTRACTION = 1;
     private static final int INDEX_MULTIPLICATION = 2;
@@ -10,8 +11,10 @@ public abstract class Operators {
     private static final int INDEX_UNARY_MINUS = 6;
     private static final int INDEX_UNARY_PLUS = 7;
 
+    //Array of type operator to store all the operators and define their methods
     private static final Operator[] builtinOperators = new Operator[8];
 
+    //static block to assign each index with defined method
     static {
         builtinOperators[INDEX_ADDITION]= new Operator("+", 2, true, Operator.PRECEDENCE_ADDITION) {
             @Override
@@ -68,7 +71,7 @@ public abstract class Operators {
             }
         };
     }
-
+    // return the builtin operator based on the symbol given
     public static Operator getBuiltinOperator(final char symbol, final int numArguments) {
         switch(symbol) {
             case '+':
