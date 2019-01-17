@@ -5,7 +5,8 @@ Date: 18 January 2019
 Course Code: ICS4U1-01
 To: Mr.Fernandes
 Description: Class representing the builtin functions available for use in expressions
-Features: Each function has been 
+Features: Each function has been defined using a set of of values so that each functiion can be stored using an array
+of the abstract function class. I am creating an instance of the function class for each index in the array
 Major Skills: Creation of an array of abstract class Function to store each builtin function, rather than intializing
 everytime. Use of a static block to assign each function with their own array index and overriding their abstract method.
 Use of switch statment to return the builtin fuction given the name of the function
@@ -258,7 +259,7 @@ public class Functions {
         };
     }
 
-    /**
+    /*
      * Get the built in function depending on its name and return the correct set of methods assigned for that function
      */
     public static Function getBuiltinFunction(final String name) {

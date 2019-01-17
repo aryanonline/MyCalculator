@@ -1,6 +1,16 @@
 package expression.tokenize;
-
 import expression.operator.Operator;
+/*
+Name: Aryan Singh
+Date: 18 January 2019
+Course Code: ICS4U1-01
+To: Mr.Fernandes
+Description: This class is used to represent an Operator Token
+Features: None
+Major Skills: Use of inheritance by having the class extend the abstract class Token. Use of if statment to check
+if an operator is valid. Use to throw statement to shrpw error message for operator not being valid
+Areas of concern: None
+*/
 
 public class OperatorToken extends Token{
     //operator variable of type operator object

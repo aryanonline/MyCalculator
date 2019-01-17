@@ -1,12 +1,18 @@
 package expression.operator;
 /*
 Name: Aryan Singh
-Date: 18 January
+Date: 18 January 2019
+Course Code: ICS4U1-01
 To: Mr.Fernandes
-Accomplishments:
-Challenges:
-Concerns:
- */
+Description: An abstract class representing the different type of operators along with their precedence. Can be used by
+sub classes to set the get an operators symbol and its properties defined within the abstract class.
+Features: None
+Major Skills: Use an array that contains all of the defined operators. Use of a while loop to loop through the array, and
+use of if statement to check if a specified operator is valid. Use of an abstract to be inherited by other sub classes that
+are of type operator. Use of getters and setters to get and set the properties of an operator. Use of abstract method to
+to be overidden by other sub classes that are also an operator type
+Areas of concern: None
+*/
 public abstract class Operator {
 
     //Assigning each operator their precedence to be used during calculation
