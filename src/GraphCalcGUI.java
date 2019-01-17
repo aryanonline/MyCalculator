@@ -236,15 +236,9 @@ public class GraphCalcGUI extends JFrame {
                 .variable("X")
                 .build();
 
-        list = createDataset(exp);
-
-        int i = 0;
         int j = equations.size();
         XYSeries eq = new XYSeries("E"+j);
-        for (Double d : list) {
-            eq.add(i++, d);
-        }
-
+        createDataset(exp, eq);
         equations.add(eq);
 
         chartData.removeAllSeries();
@@ -257,7 +251,7 @@ public class GraphCalcGUI extends JFrame {
         revalidate();
     }
 
-    private List<Double> createDataset(Expression exp) {
+    private void createDataset(Expression exp, XYSeries eq) {
         //Upper domain of the equation
         double valLower = Double.parseDouble(jTxtLowerBound.getText());
         //lower domain of the equation
@@ -266,7 +260,7 @@ public class GraphCalcGUI extends JFrame {
         double valPoints = Double.parseDouble(jTxtPoints.getText());
 
         //declaration of array list to dtore the evaluated points for each X-Value on the graph
-        List<Double> list = new ArrayList<Double>();
+       // List<Double> list = new ArrayList<Double>();
 
         //calculating the the seperation of between the points
         double spread = valUpper - valLower;
@@ -280,10 +274,10 @@ public class GraphCalcGUI extends JFrame {
             //Converting the result into two decimals and storing it within the variable fmtNum
             double fmtNum = Double.parseDouble(formatter.format(result));
             //adding converted result within the list
-            list.add(fmtNum);
+            eq.add(i, fmtNum);
         }
 
-        return list;
+        //return list;
     }
 
     private void setUI(){
