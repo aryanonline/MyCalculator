@@ -3,7 +3,7 @@ package expression.function;
 Name: Aryan Singh
 Date: 18 January 2019
 To: Mr.Fernandes
-Accomplishments:
+Accomplishments: This class is an abstract that is used to represent a
 Challenges:
 Concerns:
  */
