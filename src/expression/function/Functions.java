@@ -6,7 +6,7 @@ Date: 18 January 2019
  * Class representing the builtin functions available for use in expressions
  */
 public class Functions {
-    //Defined set of functions within scientific calculator
+    //Define array constants for functions within scientific calculator
     private static final int INDEX_SIN = 0;
     private static final int INDEX_COS = 1;
     private static final int INDEX_TAN = 2;
@@ -38,12 +38,15 @@ public class Functions {
     //array of abstract to classes to be later on used to assign set of defined functions with their values
     private static final Function[] builtinFunctions = new Function[27];
 
-    //Assigning each index as type of Function (parent class) with their function name and defining their apply method
+    //Using static block will ensure this is the first thing called when class instantiates.
+    // Assigning each index as Function (parent class) with their function name and defining their apply method
+    //Each time creating new class that extends abstract function class and overrides apply method.
     static {
         //sin function
         builtinFunctions[INDEX_SIN] = new Function("sin") {
             @Override
             public double apply(double... args) {
+                //assuming degrees, therefore convert to radians
                 return Math.sin(Math.toRadians(args[0]));
             }
         };
@@ -72,7 +75,7 @@ public class Functions {
                 return 1d/Math.tan(Math.toRadians(args[0]));
             }
         };
-        //Log function
+        //Log / Ln function
         builtinFunctions[INDEX_LOG] = new Function("log") {
             @Override
             public double apply(double... args) {
@@ -211,21 +214,21 @@ public class Functions {
                 }
             }
         };
-        //ASinH function
+        //ASinH e.g. sinh inverse function
         builtinFunctions[INDEX_ASINH] = new Function("asinh", 1) {
             @Override
             public double apply(double... args) {
                 return Math.log(args[0] + Math.sqrt(args[0] * args[0] + 1));
             }
         };
-        //Acosh function
+        //Acosh e.g. cosh inverse function
         builtinFunctions[INDEX_ACOSH] = new Function("acosh", 1) {
             @Override
             public double apply(double... args) {
                 return Math.log(args[0] + Math.sqrt(args[0] * args[0] - 1));
             }
         };
-        //Atanh function
+        //Atanh e.g. tanh inverse function
         builtinFunctions[INDEX_ATANH] = new Function("atanh", 1) {
             @Override
             public double apply(double... args) {

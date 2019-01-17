@@ -9,7 +9,7 @@ Concerns:
  */
 
 public abstract class Operators {
-    //different operators and their index numbers
+    //different operators and their constant index numbers
     private static final int INDEX_ADDITION = 0;
     private static final int INDEX_SUBTRACTION = 1;
     private static final int INDEX_MULTIPLICATION = 2;
@@ -83,12 +83,14 @@ public abstract class Operators {
     public static Operator getBuiltinOperator(final char symbol, final int numArguments) {
         switch(symbol) {
             case '+':
+                // + can be addition or unary plus
                 if (numArguments != 1) {
                     return builtinOperators[INDEX_ADDITION];
                 }else{
                     return builtinOperators[INDEX_UNARY_PLUS];
                 }
             case '-':
+                // - can be subtraction or unary minus
                 if (numArguments != 1) {
                     return builtinOperators[INDEX_SUBTRACTION];
                 }else{

@@ -26,7 +26,7 @@ public abstract class Operator {
     public static final int PRECEDENCE_UNARY_PLUS = PRECEDENCE_UNARY_MINUS;
 
     //Array that contains a set of allowed expression operators
-    public static final char[] ALLOWED_OPERATOR_CHARS = { '+', '-', '*', '/', '%', '^', '!', '#','§', '$', '&', ';', ':', '~', '<', '>', '|', '='};
+    public static final char[] ALLOWED_OPERATOR_CHARS = { '+', '-', '*', '/', '%', '^', '!', '<', '>', '|', '='};
 
     protected final int numOperands;
     protected final boolean leftAssociative;
@@ -49,7 +49,8 @@ public abstract class Operator {
    Constructor method for Operator class
    Symbol represents the symbol of the expression operator
    numOfOperands represent the the number of operands that the operator takes (1 or 2)
-   leftAssociative is set to true if the operator is left associative and false if it is right associative
+   leftAssociative is set to true if the operator has left associative and false if it is right associative.
+   At same precedence left associative is prior to right.
    Precedence is the precedence of operators (A way of ranking different operators)
     */
     public Operator(String symbol, int numberOfOperands, boolean leftAssociative,
