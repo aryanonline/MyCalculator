@@ -302,6 +302,7 @@ public class SimpleCalcGUI extends JFrame {
                 break;
         }
 
+        //Once the equal button is pressed create the given expression into a text Expression
         if(!lastToken.equals("=")) {
             if (!lastToken.equals(""))
                 tokenArray.push(lastToken);
@@ -309,12 +310,16 @@ public class SimpleCalcGUI extends JFrame {
         }
     }
 
-    //Allowing the entered expression to be displayed on screen
+    //Method to create text expression
     public void createTextExpression(){
+        //initializing text expression
         textExpression = "";
+        //looping through the token array
         for(int i=0; i<tokenArray.size();i++)
+            //setting each text expression as a text expression
             textExpression += tokenArray.get(i);
 
+        //setting the text expression within a jtaResult
         jtaResult.setText(textExpression);
     }
 

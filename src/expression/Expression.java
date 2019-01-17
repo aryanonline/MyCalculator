@@ -1,4 +1,12 @@
 package expression;
+/*
+Name:Aryan Singh
+Date: 18 january 2019
+To: Mr.Fernandes
+Accomplishments:
+Challenges:
+Concerns:
+ */
 
 import expression.function.Functions;
 import expression.tokenize.*;
@@ -18,7 +26,7 @@ public class Expression {
         this.tokens = tokens;
         this.variables = new HashMap<>(1);
     }
-    // if the user has entered any type of illegal functions
+    // constructor method
     public Expression setVariable(final String name, final double value) {
         if (Functions.getBuiltinFunction(name) != null) {
             throw new IllegalArgumentException("The variable name '" + name + "' is invalid. Since there exists a function with the same name.");

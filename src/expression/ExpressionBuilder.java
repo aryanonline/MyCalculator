@@ -7,10 +7,13 @@ import expression.tokenize.Tokenizer;
 
 import java.io.IOException;
 import java.util.*;
-
-/**
- * Factory class for {@link Expression} instances. This class is the main API entrypoint. Users should create new
- * {@link Expression} instances using this factory class.
+/*
+Name: Aryan Singh
+Date: 18 January 2019
+To: Mr.Fernandes
+Accomplishments:
+Challenges:
+Concerns:
  */
 public class ExpressionBuilder {
 
@@ -18,42 +21,29 @@ public class ExpressionBuilder {
     private static final boolean _DEBUG = true;
     private final Set<String> variableNames;
 
-    /**
-     * Create a new expression.ExpressionBuilder instance and initialize it with a given expression string.
-     * @param expression the expression to be parsed
-     */
+    //  //Create a new Expression Builder instance and initialize it with a given expression string
     public ExpressionBuilder(String expression) {
-        if (expression == null || expression.trim().length() == 0) {
+        //checks if the expression is empty
+        if (expression == null || expression.trim().length() == 0){
+            //displays error message
             throw new IllegalArgumentException("expression.Expression can not be empty");
         }
+        //sets the expression
         this.expression = expression;
+        //creates a new Hash set for vriable names variable with a capacity of 1
         this.variableNames = new HashSet<>(1);
     }
-
-    /**
-     * Declare variable names used in the expression
-     * @param variableNames the variables used in the expression
-     * @return the expression.ExpressionBuilder instance
-     */
+    //Declare the variables names used in the expression
     public ExpressionBuilder variables(String ... variableNames) {
         Collections.addAll(this.variableNames, variableNames);
         return this;
     }
-
-    /**
-     * Declare a variable used in the expression
-     * @param var the variable used in the expression
-     * @return the expression.ExpressionBuilder instance
-     */
+    //declare a variable used in the expression
     public ExpressionBuilder variable(String var) {
         this.variableNames.add(var);
         return this;
     }
-
-    /**
-     * Build the {@link Expression} instance using the custom operator and functions set.
-     * @return an {@link Expression} instance which can be used to evaluate the result of the expression
-     */
+    //Build the instance using the custon operator and function set
     public Expression build() {
         if (expression.length() == 0) {
             throw new IllegalArgumentException("The expression can not be empty");
@@ -64,43 +54,53 @@ public class ExpressionBuilder {
                 throw new IllegalArgumentException("A variable can not have the same name as a expression.function [" + var + "]");
             }
         }
+        //return a RPN notation expression
         return new Expression(convertToRPN(this.expression));
     }
-
-    /**
-     * Reverse polish notation for expressions.
-     * http://www.learn4master.com/data-structures/stack/convert-infix-notation-to-reverse-polish-notation-java
-     */
+    //Converts expression into reversed polish notation
     private static Token[] convertToRPN(final String expression){
+        //Stack to store operators
         final Stack<Token> stack = new Stack<>();
+        //output to store numbers and RPN array
         final List<Token> output = new ArrayList<>();
-
+        //creates a new instance of Tokenizer class
         final Tokenizer tokenizer = new Tokenizer();
+        //Creates and empty list of type Token
         List<Token> tokens = null;
         try {
+            //tokenizes the given expression
             tokens = tokenizer.tokenize(expression);
             if(_DEBUG) System.out.println("Tokens from Tokenizer: " + tokens);
         }
+        //illegal Argument exception
         catch (IOException | IllegalArgumentException e1){
             System.out.println(e1.toString());
         }
-
+        //if the tokens List is empty
         if(tokens == null){
+            //throw error message
             throw new IllegalArgumentException("Empty expression cannot be evaluated.");
         }
         //Adding any numericaal values to the output ArrayList and any operators or functions to the stack
         if(_DEBUG) System.out.println("Looping tokens to create RPN: ==== ");
+        //loops through the list
         for(Token token: tokens){
             switch (token.getType()) {
+                //if the token is a number
                 case Token.TOKEN_NUMBER:
+                    //if the token is a variable
                 case Token.TOKEN_VARIABLE:
+                    //add the token to the output array list
                     output.add(token);
                     break;
+                    //if the token is a function token
                 case Token.TOKEN_FUNCTION:
+                    //add the token to the stack
                     stack.add(token);
                     break;
-                    //if a token separator was used keep adding the separator to the output until a open parenthesis is found
+                    //if a token separator was used
                 case Token.TOKEN_SEPARATOR:
+                    //keep adding all the into the output array list until a open tarentheses token is found
                     while (!stack.empty() && stack.peek().getType() != Token.TOKEN_PARENTHESES_OPEN) {
                         output.add(stack.pop());
                     }
@@ -111,7 +111,7 @@ public class ExpressionBuilder {
                     break;
                     //check if the Token is an opperator
                 case Token.TOKEN_OPERATOR:
-                    //while the stack is an the peek is an operator
+                    //while the stack is not empty and the peek is an operator
                     while (!stack.empty() && stack.peek().getType() == Token.TOKEN_OPERATOR) {
                         //down cast o1 to an operator token
                         OperatorToken o1 = (OperatorToken) token;
@@ -151,7 +151,7 @@ public class ExpressionBuilder {
                     }
                     break;
                 default:
-                    //throw an error if nothing can be performed
+                    //throw an error message if nothing can be performed
                     throw new IllegalArgumentException("Unknown Token type encountered. This should not happen");
             }
             //debugging to check if everything is working fine
@@ -160,12 +160,15 @@ public class ExpressionBuilder {
                 System.out.println("stack: " + getAsStringArray(stack));
             }
         }
-        //Confirm with Dad on this line of code
+        //Debugging
         if(_DEBUG) System.out.println("Rearranging output list for evaluation: ==== ");
-        //error checking for any invalid inputs
+        //loops while the stack is not empty
         while (!stack.empty()) {
+            //creates each element i the stack a token
             Token t = stack.pop();
+            //if a misplace parenthesis is detected
             if (t.getType() == Token.TOKEN_PARENTHESES_CLOSE || t.getType() == Token.TOKEN_PARENTHESES_OPEN) {
+                //throw error message
                 throw new IllegalArgumentException("Mismatched parentheses detected. Please check the expression");
             } else {
                 //add the tokens into the output
@@ -175,6 +178,7 @@ public class ExpressionBuilder {
             if(_DEBUG)
                 System.out.println("output: " + getAsStringArray(output));
         }
+        //returns the uotput array for debug checking
         return output.toArray(new Token[output.size()]);
     }
 

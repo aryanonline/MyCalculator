@@ -7,6 +7,13 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
+/*
+Name: Aryan Singh
+Date: 18 january 2018
+Accomplishments:
+Challenges:
+Concerns:
+ */
 
 public final class CalcUtils {
 

@@ -24,6 +24,15 @@ import java.util.List;
 import java.util.Scanner;
 
 /*
+Name: Aryan Singh
+Date: 18 Jnauary 2019
+To: Mr.Fernandes
+Accomplishments:
+Challenges:
+Concerns:
+ */
+
+/*
 Consult about this class with dad
  */
 public class GraphCalcGUI extends JFrame {

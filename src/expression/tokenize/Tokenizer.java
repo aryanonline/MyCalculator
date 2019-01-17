@@ -10,6 +10,14 @@ import java.io.StreamTokenizer;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
+/*
+Name:Aryan Singh
+Date: 18 January 2019
+To: Mar.Fernandes
+Accomplishments:
+Challenes:
+Concerns:
+ */
 
 public class Tokenizer {
     private List<Token> tokens;
