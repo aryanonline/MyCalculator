@@ -1,17 +1,15 @@
 package expression.tokenize;
 
-/**
- * Represents an argument separator in functions i.e: ','
- */
+//Represents an argument seperator token
 class ArgumentSeparatorToken extends Token {
-    /**
-     * Create a new instance
-     */
+    //constructor method
     ArgumentSeparatorToken() {
+        //passes in Token_Seperator value to parent class
         super(Token.TOKEN_SEPARATOR);
     }
 
     @Override
+    //to string method to return the argument seperator symbol
     public String toString() {
         return ",";
     }
