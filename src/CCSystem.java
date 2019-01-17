@@ -280,63 +280,6 @@ public class CCSystem extends JPanel {
         }
     }
 
-    //region Commented Code Block
-    /*
-     * Draw a Line.
-     */
-    /*private void drawLine(Graphics2D g2d, CCLine line) {
-        g2d.setPaint(line.paint);
-        g2d.setStroke(line.stroke);
-        if (line.b == 0.0) drawLineVertical(g2d, line);
-        else if (line.a == 0.0) drawLineHorizontal(g2d, line);
-    }*/
-
-    /* Assume a == 0.0 */
-    /*private void drawLineHorizontal(Graphics2D g2d, CCLine line) {
-        int mul = (line.b  < 0) ? -1 : 1;
-        double yval = line.c*mul;
-        if (!validY(yval)) return; *//* Don't draw lines off the screen. *//*
-
-        int y = translateY(yval);
-        int x1 = translateX(minX);
-        int x2 = translateX(maxX);
-
-        g2d.drawLine(x1, y, x2, y);
-    }*/
-
-    /* Assume b == 0.0 */
-    /*private void drawLineVertical(Graphics2D g2d, CCLine line) {
-        int mul = (line.a < 0) ? -1 : 1;
-        double xval = line.c*mul;
-        if (!validX(xval)) return; *//* Don't draw lines off the screen. *//*
-
-        int x = translateX(xval);
-        int y1 = translateY(minY);
-        int y2 = translateY(maxY);
-
-        g2d.drawLine(x, y1, x, y2);
-    }*/
-
-    /* Draw a point */
-    /*private void drawPoint(Graphics2D g2d, CCPoint point) {
-        Point p = translate(new Point2D.Double(point.x,  point.y));
-
-        g2d.setPaint(point.paint);
-        g2d.setStroke(point.stroke);
-        Ellipse2D r2d = new Ellipse2D.Double(p.x-2, p.y-2, 4, 4);
-        g2d.draw(r2d);
-        g2d.fill(r2d);
-    }
-
-    public void move(double loX, double hiX, double loY, double hiY) {
-        this.minX = loX;
-        this.maxX = hiX;
-        this.minY = loY;
-        this.maxY = hiY;
-    }
-    */
-    //endregion
-
     /* Draw a single unit line on the x-axis at a given value. */
     private void drawXUnitLine(Graphics2D g2d, BigDecimal val) {
         /* Don't draw anything at the origin. */

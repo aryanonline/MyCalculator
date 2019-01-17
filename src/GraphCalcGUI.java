@@ -25,12 +25,16 @@ import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GraphCalcGUI extends JFrame {
+    //Used to keep the saved graph from my graph.txt
     private HashSet<String> workingGraphList = new HashSet<String>();
+    //Used to keep the plotted graphs on the axis
     private HashSet<String> plottedGraphList = new HashSet<String>();
-
+    //Panel that allows user to select equation
     private JPanel jPnlSetPlotter = new JPanel(new BorderLayout());
+    //Panel to allow for the display of the chart
     private CCSystem jPnlChartPanel;
 
+    //Function button
     private JButton jBtnZoomIn = new JButton("");
     private JButton jBtnZoomOut = new JButton("");
     private JButton jBtnSave = new JButton("");
@@ -39,25 +43,36 @@ public class GraphCalcGUI extends JFrame {
     private JButton jBtnClear = new JButton("");
     private JButton jBtnIntersect = new JButton("");
 
+    //ComboBox for user to select equation
     private JComboBox jCbFunctionTypes = new JComboBox();
+    //comboBox for user to select from saved equation
     private JComboBox jCbSavedFunctions = new JComboBox();
+    //Variable 1 textField
     private JTextField jTxtA = new JTextField("");
+    //Variabel 2 rext field
     private JTextField jTxtB = new JTextField("");
+    //Variable 3 text field
     private JTextField jTxtC = new JTextField("");
+    //lower domain text field
     private JTextField jTxtLowerBound = new JTextField("");
+    //upper domain text field
     private JTextField jTxtUpperBound = new JTextField("");
+    //Number of points to be plotted text field
     private JTextField jTxtPoints = new JTextField("");
 
+    //Different graph colors
     private static final Color[] graphColors = { Color.RED, Color.BLUE, Color.GREEN, Color.DARK_GRAY, Color.ORANGE, Color.PINK };
 
     public GraphCalcGUI(){
+        //setting the GraphCalcGUI
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(new BorderLayout());
         setSize(800, 500);
         this.setResizable(false);
-
+        //Whenever the the a saved function is selcected the UI is reset
         readSavedGraphs();
         setUI();
+        //adding the two panels
         getContentPane().add(jPnlChartPanel, BorderLayout.CENTER);
         getContentPane().add(jPnlSetPlotter, BorderLayout.WEST);
 
@@ -67,6 +82,7 @@ public class GraphCalcGUI extends JFrame {
                 //Only interested in selection change event
                 if(e.getStateChange()==ItemEvent.SELECTED) {
                     clearSettings();
+                    //Picking out all the saved equations depending on the equation selected from the equation comboBox
                     loadSavedList(jCbFunctionTypes.getSelectedIndex());
                     jCbSavedFunctions.setSelectedIndex(0);
                 }
@@ -88,6 +104,7 @@ public class GraphCalcGUI extends JFrame {
             }
         });
 
+        //Saving all the textfield values when button is clicked
         jBtnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -131,20 +148,21 @@ public class GraphCalcGUI extends JFrame {
             }
         });
 
+        //zooming in the chart axis
         jBtnZoomIn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 zoomChartAxis(jPnlChartPanel, true);
             }
         });
-
+        //Zooomig out of chart axis
         jBtnZoomOut.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 zoomChartAxis(jPnlChartPanel, false);
             }
         });
-
+        //Clear button to clear the graph
         jBtnClear.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -155,7 +173,7 @@ public class GraphCalcGUI extends JFrame {
                 jCbFunctionTypes.setSelectedIndex(0);
             }
         });
-
+        //Delete button removes the equation of the graph
         jBtnDelete.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -178,12 +196,12 @@ public class GraphCalcGUI extends JFrame {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
+    //picking a random graph color
     private Color getRandomColor(){
         int[] x = ThreadLocalRandom.current().ints(0, 5).distinct().limit(5).toArray();
         return graphColors[x[0]];
     }
-
+    //plotting the graph dependin on the generalised form of equation selected
     private void plotGraph(int index) {
         double valA = Double.parseDouble(jTxtA.getText());
         double valB = Double.parseDouble(jTxtB.getText());
@@ -237,6 +255,7 @@ public class GraphCalcGUI extends JFrame {
         revalidate();
     }
 
+    //calculating the spread for each point
     private void createDataset(Expression exp, JDataSeries equation) {
         double valLower = Double.parseDouble(jTxtLowerBound.getText());
         double valUpper = Double.parseDouble(jTxtUpperBound.getText());
