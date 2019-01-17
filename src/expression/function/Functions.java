@@ -1,10 +1,16 @@
 package expression.function;
 /*
-Name: Aryan Ssingh
+Name: Aryan Singh
 Date: 18 January 2019
-
- * Class representing the builtin functions available for use in expressions
- */
+Course Code: ICS4U1-01
+To: Mr.Fernandes
+Description: Class representing the builtin functions available for use in expressions
+Features: Each function has been 
+Major Skills: Creation of an array of abstract class Function to store each builtin function, rather than intializing
+everytime. Use of a static block to assign each function with their own array index and overriding their abstract method.
+Use of switch statment to return the builtin fuction given the name of the function
+Areas of concern: None
+*/
 public class Functions {
     //Defined set of functions within scientific calculator
     private static final int INDEX_SIN = 0;

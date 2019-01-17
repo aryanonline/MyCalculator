@@ -31,28 +31,33 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
+/*
  * A class representing a visible Cartesian coordinate system.
  * The system contains (in)visible x- and y-axes that range from one double
  * precision number to another.
+ *
+ * In this class there are two coordinate systems:
+ *
+ * 1. A two-dimensional coordinate system for Java2D where x lies in the
+ *    interval [0, window width] and y lies in the interval
+ *    [0, window height] where the units of both x and y are pixels.
+ *
+ * 2. An emulated two-dimensional coordinate system where x and y can lie in
+ *    any range definable by double precision numbers.
+ *
+ * Throughout this class, Point is used to represent a point in system 1
+ * while Point2D is used to represent a point in system 2.
+ *
+ * The translate.*(.)-methods are used to translate between the two systems.
+ *
  * The system can contain objects such as lines, points and polygons.
+ * Link: http://javaceda.blogspot.com/2010/06/draw-cartesian-coordinate-system-in.html (help with conceptual understanding)
+ * https://docs.oracle.com/javase/tutorial/2d/geometry/strokeandfill.html(Understanding how to use java stroke)
+ *
+ *
  */
 public class CCSystem extends JPanel {
-    /*
-     * In this class there are two coordinate systems:
-     *
-     * 1. A two-dimensional coordinate system for Java2D where x lies in the
-     *    interval [0, window width] and y lies in the interval
-     *    [0, window height] where the units of both x and y are pixels.
-     *
-     * 2. An emulated two-dimensional coordinate system where x and y can lie in
-     *    any range definable by double precision numbers.
-     *
-     * Throughout this class, Point is used to represent a point in system 1
-     * while Point2D is used to represent a point in system 2.
-     *
-     * The translate.*(.)-methods are used to translate between the two systems.
-     */
+
 
     //region Class Variables
     /* Some visual options */

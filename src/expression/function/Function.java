@@ -2,10 +2,13 @@ package expression.function;
 /*
 Name: Aryan Singh
 Date: 18 January 2019
+Course Code: ICS4U1-01
 To: Mr.Fernandes
-Accomplishments: This class is an abstract that is used to represent a
-Challenges:
-Concerns:
+Description: This class is an abstract class that is used to represent a function type
+Features: None
+Major Skills: Creation of an abstract class to allow for inheritance by sub classes, Creation of abstract method to be
+overridden by subclass inheriting the abstract class
+Areas of concern: None
  */
 public abstract class Function {
 
