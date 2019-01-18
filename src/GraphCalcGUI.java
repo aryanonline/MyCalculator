@@ -201,7 +201,6 @@ public class GraphCalcGUI extends JFrame {
         double valC = Double.parseDouble(jTxtC.getText());
 
         StringBuilder stringExpression = new StringBuilder();
-        List<Double> list;
 
         switch (index){
             case 1: //Quadratic - AX^2+BX+C

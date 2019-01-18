@@ -16,37 +16,30 @@
  * You should have received a copy of the GNU General Public license
  * along with jcoolib. If not, see <http://www.gnu.org/licenses/>.
  */
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
-import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /*
- * A class representing a visible Cartesian coordinate system.
- * The system contains (in)visible x- and y-axes that range from one double
- * precision number to another.
- *
+ * A class representing a Cartesian Chart Panel.
  * In this class there are two coordinate systems:
  *
  * 1. A two-dimensional coordinate system for Java2D where x lies in the
  *    interval [0, window width] and y lies in the interval
  *    [0, window height] where the units of both x and y are pixels.
  *
- * 2. An emulated two-dimensional coordinate system where x and y can lie in
- *    any range definable by double precision numbers.
+ * 2. Another two-dimensional coordinate system where x and y can lie in
+ *    cartesian plane.
  *
  * Throughout this class, Point is used to represent a point in system 1
  * while Point2D is used to represent a point in system 2.
  *
- * The translate.*(.)-methods are used to translate between the two systems.
+ * The translate methods are used to translate between the two systems.
  *
  * The system can contain objects such as lines, points and polygons.
  * Link: http://javaceda.blogspot.com/2010/06/draw-cartesian-coordinate-system-in.html (help with conceptual understanding)
@@ -88,8 +81,6 @@ public class CartesianChartPanel extends JPanel {
     /* The origin of system 1 and system 2 */
     private Point2D.Double origin2d;
     private Point origin;
-
-    private final MathContext prec = new MathContext(10);
 
     private Map<String, JDataSeries> dSource = new HashMap<>();
 
@@ -184,7 +175,7 @@ public class CartesianChartPanel extends JPanel {
      * Use the given stroke and paint to draw the grid lines.
      */
     private void drawXGridLines(Graphics2D g2d, double ratio, Stroke stroke, Paint paint) {
-        double vbu = this.vbuX.doubleValue() / ratio;
+        double vbu = this.vbuX / ratio;
 
         int idx = (int) Math.ceil(minX / vbu);
         int end = (int) Math.floor(maxX / vbu);
@@ -199,7 +190,7 @@ public class CartesianChartPanel extends JPanel {
      * Use the given stroke and paint to draw the grid lines.
      */
     private void drawYGridLines(Graphics2D g2d, double ratio, Stroke stroke, Paint paint) {
-        double vbu = this.vbuY.doubleValue() / ratio;
+        double vbu = this.vbuY / ratio;
 
         int idx = (int) Math.ceil(minY / vbu);
         int end = (int) Math.floor(maxY / vbu);
@@ -224,11 +215,11 @@ public class CartesianChartPanel extends JPanel {
         return dSource.size();
     }
 
-    public void drawPoints(Graphics2D g2d){
+    private void drawPoints(Graphics2D g2d){
         g2d.setStroke(new BasicStroke(1f));
         for(JDataSeries ds: dSource.values()){
             g2d.setPaint(ds.getSeriesColor());
-            List<Point2D.Double> pts = new ArrayList(ds.getDataset());
+            ArrayList<Point2D.Double> pts = new ArrayList<>(ds.getDataset());
             for (int i=0; i<pts.size()-1; i++){
                 int x1 = translateX(pts.get(i).getX());
                 int y1 = translateY(pts.get(i).getY());
@@ -243,30 +234,18 @@ public class CartesianChartPanel extends JPanel {
     /* Draw a single unit line on the x-axis at a given value. */
     private void drawXUnitLine(Graphics2D g2d, Double val) {
         /* Don't draw anything at the origin. */
-        if (val.doubleValue() == 0.0) return;
+        if (val == 0.0) return;
 
-        /* val is "small" if -10^7 < val < 10^7. */
-        //BigDecimal big = BigDecimal.valueOf(10000000);
-        //boolean small = val.compareTo(big) < 0
-        //        && val.compareTo(big.negate()) > 0;
+        String strVal = val.toString();
 
-        /*
-         * When val is not "small", BigDecimal's toString does not use
-         * scientific notation, so Double's toString is used instead.
-         */
-        String strval;
-        //if (small)
-        strval = val.toString();
-        //else strval = Double.toString(val.doubleValue());
-
-        Point2D.Double p2d = new Point2D.Double(val.doubleValue(), origin2d.y);
+        Point2D.Double p2d = new Point2D.Double(val, origin2d.y);
         Point p = translate(p2d);
 
-        int strValPixels = 7 * strval.length();
+        int strValPixels = 7 * strVal.length();
         int offset = (minY >= -translateY(40)) ? -10 : 20;
 
         g2d.drawLine(p.x, p.y-ulSize, p.x, p.y+ulSize);
-        g2d.drawString(strval, p.x - strValPixels/2, p.y + offset);
+        g2d.drawString(strVal, p.x - strValPixels/2, p.y + offset);
     }
 
     /* Draw all the unit lines on the x-axis. */
@@ -286,32 +265,25 @@ public class CartesianChartPanel extends JPanel {
 
     /* Draw a single unit line on the y-axis at a given value. */
     private void drawYUnitLine(Graphics2D g2d, Double val) {
-        if (val.doubleValue() == 0.0) return;
+        if (val == 0.0) return;
 
-        /*BigDecimal big = BigDecimal.valueOf(10000000);
-        boolean small = val.compareTo(big) < 0
-                && val.compareTo(big.negate()) > 0;*/
+        String strVal = val.toString();
+        //else strVal = Double.toString(val.doubleValue());
 
-        String strval;
-        //if (small)
-        strval = val.toString();
-        //else strval = Double.toString(val.doubleValue());
-
-        Point2D.Double p2d = new Point2D.Double(origin2d.x, val.doubleValue());
+        Point2D.Double p2d = new Point2D.Double(origin2d.x, val);
         Point p = translate(p2d);
 
-        int strValPixels = 7 * strval.length() + 7;
+        int strValPixels = 7 * strVal.length() + 7;
         int offset = (minX >= -translateX(strValPixels*2)) ? 5 : -strValPixels;
 
         g2d.drawLine(p.x-ulSize, p.y, p.x+ulSize, p.y);
-        g2d.drawString(strval, p.x+offset, p.y+5);
+        g2d.drawString(strVal, p.x+offset, p.y+5);
     }
 
     /* Draw all the unit lines on the x-axis. */
     private void drawYUnitLines(Graphics2D g2d) {
-        int idx = (int) Math.ceil(minY / vbuY.doubleValue());
-        int end = (int) Math.floor(maxY / vbuY.doubleValue());
-
+        int idx = (int) Math.ceil(minY / vbuY);
+        int end = (int) Math.floor(maxY / vbuY);
 
         for (int i = idx; i <= end; i++) drawYUnitLine(g2d, vbuY * i);
     }
@@ -319,22 +291,14 @@ public class CartesianChartPanel extends JPanel {
     private Double findScale(double num) {
         int x = (int) Math.floor(Math.log10(num));
 
-        Double scale=Math.pow(10, x);
-        /*try {
-            scale = BigDecimal.TEN.pow(x, prec);
-        } catch (ArithmeticException e) {
-            scale = BigDecimal.valueOf(Double.MAX_VALUE);
-        }*/
+        Double scale = Math.pow(10, x);
 
         /* Don't need more than double precision here */
-        double finals=0;
-        double quot = num / scale.doubleValue();
-        if (quot > 5.0) finals = scale * 10d;
-        else if (quot > 2.0) finals = scale*5d;
-        else if (quot > 1.0) finals = scale*2d;
-        else finals= scale;
-
-        return finals;
+        double quot = num / scale;
+        if (quot > 5.0) return scale * 10d;
+        if (quot > 2.0) return scale*5d;
+        if (quot > 1.0) return scale*2d;
+        else return scale;
     }
 
     private RenderingHints getNiceGraphics() {
