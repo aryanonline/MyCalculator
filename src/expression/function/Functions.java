@@ -24,26 +24,23 @@ public class Functions {
     private static final int INDEX_ACOS = 7;
     private static final int INDEX_ASIN = 8;
     private static final int INDEX_ATAN = 9;
-    private static final int INDEX_CBRT = 10;
-    private static final int INDEX_CEIL = 11;
-    private static final int INDEX_FLOOR = 12;
-    private static final int INDEX_SINH = 13;
-    private static final int INDEX_SQRT = 14;
-    private static final int INDEX_TANH = 15;
-    private static final int INDEX_COSH = 16;
-    private static final int INDEX_POW = 17;
-    private static final int INDEX_EXP = 18;
-    private static final int INDEX_EXPM1 = 19;
-    private static final int INDEX_LOG10 = 20;
-    private static final int INDEX_LOG2 = 21;
-    private static final int INDEX_SGN = 22;
-    private static final int INDEX_ASINH = 23;
-    private static final int INDEX_ACOSH = 24;
-    private static final int INDEX_ATANH = 25;
-    private static final int INDEX_FACT = 26;
+    private static final int INDEX_CEIL = 10;
+    private static final int INDEX_FLOOR = 11;
+    private static final int INDEX_SINH = 12;
+    private static final int INDEX_SQRT = 13;
+    private static final int INDEX_TANH = 14;
+    private static final int INDEX_COSH = 15;
+    private static final int INDEX_POW = 16;
+    private static final int INDEX_EXP = 17;
+    private static final int INDEX_LOG10 = 18;
+    private static final int INDEX_SGN = 19;
+    private static final int INDEX_ASINH = 20;
+    private static final int INDEX_ACOSH = 21;
+    private static final int INDEX_ATANH = 22;
+    private static final int INDEX_FACT = 23;
 
     //array of abstract to classes to be later on used to assign set of defined functions with their values
-    private static final Function[] builtinFunctions = new Function[27];
+    private static final Function[] builtinFunctions = new Function[24];
 
     //Assigning each index as type of Function (parent class) with their function name and defining their apply method
     static {
@@ -86,13 +83,6 @@ public class Functions {
                 return Math.log(args[0]);
             }
         };
-        //Log2 function
-        builtinFunctions[INDEX_LOG2] = new Function("log2") {
-            @Override
-            public double apply(double... args) {
-                return Math.log(args[0]) / Math.log(2d);
-            }
-        };
         //Log10 function
         builtinFunctions[INDEX_LOG10] = new Function("log10") {
             @Override
@@ -133,13 +123,6 @@ public class Functions {
             @Override
             public double apply(double... args) {
                 return Math.toDegrees(Math.atan(args[0]));
-            }
-        };
-        //Cbrt function
-        builtinFunctions[INDEX_CBRT] = new Function("cbrt") {
-            @Override
-            public double apply(double... args) {
-                return Math.cbrt(args[0]);
             }
         };
         //floor function
@@ -196,13 +179,6 @@ public class Functions {
             @Override
             public double apply(double... args) {
                 return Math.exp(args[0]);
-            }
-        };
-        //Expm1 function
-        builtinFunctions[INDEX_EXPM1] = new Function("expm1", 1) {
-            @Override
-            public double apply(double... args) {
-                return Math.expm1(args[0]);
             }
         };
         //SGN function
@@ -292,8 +268,6 @@ public class Functions {
                 return builtinFunctions[INDEX_LOG];
             case "log10"://return built in fuction for log10
                 return builtinFunctions[INDEX_LOG10];
-            case "log2"://return built in fuction for log2
-                return builtinFunctions[INDEX_LOG2];
             case "log1p"://return built in fuction for log1p
                 return builtinFunctions[INDEX_LOG1P];
             case "ceil"://return built in fuction for ceil
@@ -302,14 +276,10 @@ public class Functions {
                 return builtinFunctions[INDEX_FLOOR];
             case "sqrt"://return built in fuction for sqrt
                 return builtinFunctions[INDEX_SQRT];
-            case "cbrt"://return built in fuction for cbrt
-                return builtinFunctions[INDEX_CBRT];
             case "pow"://return built in fuction for pow
                 return builtinFunctions[INDEX_POW];
             case "exp"://return built in fuction for exp
                 return builtinFunctions[INDEX_EXP];
-            case "expm1"://return built in fuction for expm1
-                return builtinFunctions[INDEX_EXPM1];
             case "signum"://return built in fuction for signum
                 return builtinFunctions[INDEX_SGN];
             case "asinh"://return built in fuction for asinh
