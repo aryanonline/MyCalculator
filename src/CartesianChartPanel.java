@@ -85,7 +85,6 @@ public class CartesianChartPanel extends JPanel {
     private Map<String, JDataSeries> dSource = new HashMap<>();
 
     //endregion
-
     public CartesianChartPanel(double minX, double minY, double maxX, double maxY) {
         this.minX = minX;
         this.minY = minY;
@@ -359,9 +358,11 @@ public class CartesianChartPanel extends JPanel {
     }
 
     private void updatePosition() {
+        //getting the distance between the c and y
         distX = maxX - minX;
         distY = maxY - minY;
 
+        //dividing the x-distance in parts
         xscale = distX / getWidth();
         yscale = distY / getHeight();
 
@@ -372,6 +373,7 @@ public class CartesianChartPanel extends JPanel {
         /* Exact value between each unit line */
         double udistX = distX / unitsX;
         double udistY = distY / unitsY;
+
 
         vbuX = findScale(udistX);
         vbuY = findScale(udistY);

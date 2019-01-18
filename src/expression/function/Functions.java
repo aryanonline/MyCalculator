@@ -135,13 +135,6 @@ public class Functions {
                 return Math.toDegrees(Math.atan(args[0]));
             }
         };
-        //Cbrt function
-        builtinFunctions[INDEX_CBRT] = new Function("cbrt") {
-            @Override
-            public double apply(double... args) {
-                return Math.cbrt(args[0]);
-            }
-        };
         //floor function
         builtinFunctions[INDEX_FLOOR] = new Function("floor") {
             @Override

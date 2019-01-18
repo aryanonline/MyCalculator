@@ -19,6 +19,7 @@ public class Expression {
     //decleration of variables
     private final Token[] tokens;
     private boolean _DEBUG = true;
+    //Since every variable is key-value pair type
     private final Map<String, Double> variables;
 
     //contructor method
@@ -31,6 +32,7 @@ public class Expression {
         if (Functions.getBuiltinFunction(name) != null) {
             throw new IllegalArgumentException("The variable name '" + name + "' is invalid. Since there exists a function with the same name.");
         }
+        //puts the name of the variable and value within the Map as a key-value pair
         this.variables.put(name, value);
         return this;
     }

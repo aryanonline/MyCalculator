@@ -11,13 +11,18 @@ import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 /*
-Name:Aryan Singh
+Name: Aryan Singh
 Date: 18 January 2019
-To: Mar.Fernandes
-Accomplishments:
-Challenes:
-Concerns:
- */
+Course Code: ICS4U1-01
+To: Mr.Fernandes
+Description: A class that, using a given string tokenizes the string into its tokens, and returns a list of the tokens
+https://www.baeldung.com/java-stringtokenizer (understanding how to tokenize a given string)
+Features: None
+Major Skills: Use of switch staements to distinguish from tokens. Use of if and else statements to distigusish
+between the similar properties of some tokens. Use of while loop to loop through all tokens within tokenizer.
+Use of list to create a list to store tokens
+Areas of concern: None
+*/
 
 public class Tokenizer {
     private List<Token> tokens;
@@ -25,11 +30,13 @@ public class Tokenizer {
     private boolean _DEBUG = false;
 
     public List<Token> tokenize(String s) throws IOException {
+        //stream tokenizer tokenizes a given stream of string into tokens
         StreamTokenizer tokenizer = new StreamTokenizer(new StringReader(s));
         tokenizer.ordinaryChar('-');  // Don't parse minus as part of numbers.
         tokenizer.ordinaryChar('/');  // Don't treat slash as a comment start.
         tokens = new ArrayList<>();
         String xToken;
+        //loops until tokenizer has reached its end
         while (tokenizer.nextToken() != StreamTokenizer.TT_EOF) {
             switch (tokenizer.ttype) {
                 // if the token is a number token
