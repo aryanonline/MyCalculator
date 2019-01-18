@@ -82,8 +82,8 @@ public class CartesianChartPanel extends JPanel {
      *
      * vbu stands for "value between unit lines"
      */
-    private BigDecimal vbuX;
-    private BigDecimal vbuY;
+    private Double vbuX;
+    private Double vbuY;
 
     /* The origin of system 1 and system 2 */
     private Point2D.Double origin2d;
@@ -171,6 +171,14 @@ public class CartesianChartPanel extends JPanel {
         g2d.drawLine(x, y1, x, y2);
     }
 
+    /* Draw one horizontal grid line. */
+    private void drawYGridLine(Graphics2D g2d, double val) {
+        int y = translateY(val);
+        int x1 = translateX(minX);
+        int x2 = translateX(maxX);
+        g2d.drawLine(x1, y, x2, y);
+    }
+
     /**
      * Draw vertical grid lines a given amount of times between each unit line.
      * Use the given stroke and paint to draw the grid lines.
@@ -184,14 +192,6 @@ public class CartesianChartPanel extends JPanel {
         g2d.setStroke(stroke);
         g2d.setPaint(paint);
         for (int i = idx; i <= end; i++) drawXGridLine(g2d, i*vbu);
-    }
-
-    /* Draw one horizontal grid line. */
-    private void drawYGridLine(Graphics2D g2d, double val) {
-        int y = translateY(val);
-        int x1 = translateX(minX);
-        int x2 = translateX(maxX);
-        g2d.drawLine(x1, y, x2, y);
     }
 
    /**
@@ -241,22 +241,23 @@ public class CartesianChartPanel extends JPanel {
     }
 
     /* Draw a single unit line on the x-axis at a given value. */
-    private void drawXUnitLine(Graphics2D g2d, BigDecimal val) {
+    private void drawXUnitLine(Graphics2D g2d, Double val) {
         /* Don't draw anything at the origin. */
         if (val.doubleValue() == 0.0) return;
 
         /* val is "small" if -10^7 < val < 10^7. */
-        BigDecimal big = BigDecimal.valueOf(10000000);
-        boolean small = val.compareTo(big) < 0
-                && val.compareTo(big.negate()) > 0;
+        //BigDecimal big = BigDecimal.valueOf(10000000);
+        //boolean small = val.compareTo(big) < 0
+        //        && val.compareTo(big.negate()) > 0;
 
         /*
          * When val is not "small", BigDecimal's toString does not use
          * scientific notation, so Double's toString is used instead.
          */
         String strval;
-        if (small) strval = val.toString();
-        else strval = Double.toString(val.doubleValue());
+        //if (small)
+        strval = val.toString();
+        //else strval = Double.toString(val.doubleValue());
 
         Point2D.Double p2d = new Point2D.Double(val.doubleValue(), origin2d.y);
         Point p = translate(p2d);
@@ -275,26 +276,26 @@ public class CartesianChartPanel extends JPanel {
          * to find the value of i such that i * vbuX is the value at the first
          * visible unit line.
          */
-        int idx = (int) Math.ceil(minX / vbuX.doubleValue());
+        int idx = (int) Math.ceil(minX / vbuX);
 
         /* Also find the value of the last visible unit line. */
-        int end = (int) Math.floor(maxX / vbuX.doubleValue());
+        int end = (int) Math.floor(maxX / vbuX);
 
-        for (int i = idx; i <= end; i++) drawXUnitLine(g2d,
-                BigDecimal.valueOf(i).multiply(vbuX));
+        for (int i = idx; i <= end; i++) drawXUnitLine(g2d, vbuX * i);
     }
 
     /* Draw a single unit line on the y-axis at a given value. */
-    private void drawYUnitLine(Graphics2D g2d, BigDecimal val) {
+    private void drawYUnitLine(Graphics2D g2d, Double val) {
         if (val.doubleValue() == 0.0) return;
 
-        BigDecimal big = BigDecimal.valueOf(10000000);
+        /*BigDecimal big = BigDecimal.valueOf(10000000);
         boolean small = val.compareTo(big) < 0
-                && val.compareTo(big.negate()) > 0;
+                && val.compareTo(big.negate()) > 0;*/
 
         String strval;
-        if (small) strval = val.toString();
-        else strval = Double.toString(val.doubleValue());
+        //if (small)
+        strval = val.toString();
+        //else strval = Double.toString(val.doubleValue());
 
         Point2D.Double p2d = new Point2D.Double(origin2d.x, val.doubleValue());
         Point p = translate(p2d);
@@ -312,26 +313,28 @@ public class CartesianChartPanel extends JPanel {
         int end = (int) Math.floor(maxY / vbuY.doubleValue());
 
 
-        for (int i = idx; i <= end; i++) drawYUnitLine(g2d,
-                BigDecimal.valueOf(i).multiply(vbuY));
+        for (int i = idx; i <= end; i++) drawYUnitLine(g2d, vbuY * i);
     }
 
-    private BigDecimal findScale(double num) {
+    private Double findScale(double num) {
         int x = (int) Math.floor(Math.log10(num));
 
-        BigDecimal scale;
-        try {
+        Double scale=Math.pow(10, x);
+        /*try {
             scale = BigDecimal.TEN.pow(x, prec);
         } catch (ArithmeticException e) {
             scale = BigDecimal.valueOf(Double.MAX_VALUE);
-        }
+        }*/
 
         /* Don't need more than double precision here */
+        double finals=0;
         double quot = num / scale.doubleValue();
-        if (quot > 5.0) return scale.multiply(BigDecimal.TEN);
-        if (quot > 2.0) return scale.multiply(BigDecimal.valueOf(5));
-        if (quot > 1.0) return scale.multiply(BigDecimal.valueOf(2));
-        else return scale;
+        if (quot > 5.0) finals = scale * 10d;
+        else if (quot > 2.0) finals = scale*5d;
+        else if (quot > 1.0) finals = scale*2d;
+        else finals= scale;
+
+        return finals;
     }
 
     private RenderingHints getNiceGraphics() {
