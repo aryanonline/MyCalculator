@@ -1,11 +1,12 @@
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.*;
 import java.util.List;
 
 public class JDataSeries {
     private String seriesName;
     private Color seriesColor;
-    private List<JPoint> dataset;
+    private List<Point2D.Double> dataset;
     private double lowerBoundX;
     private double upperBoundX;
     private double lowerBoundY;
@@ -20,21 +21,21 @@ public class JDataSeries {
 
     public void add(double x, double y){
         setBounds(x, y);
-        getDataset().add(new JPoint(x, y));
+        getDataset().add(new Point2D.Double(x, y));
     }
 
-    public void add(JPoint ... points){
-        for(JPoint p: points) {
+    public void add(Point2D.Double ... points){
+        for(Point2D.Double p: points) {
             setBounds(p.getX(), p.getY());
-            getDataset().add(new JPoint(p.getX(), p.getY()));
+            getDataset().add(new Point2D.Double(p.getX(), p.getY()));
         }
     }
 
-    public List<JPoint> getDataset() {
+    public List<Point2D.Double> getDataset() {
         return dataset;
     }
 
-    public void setDataset(List<JPoint> dataset) {
+    public void setDataset(List<Point2D.Double> dataset) {
         this.dataset = dataset;
     }
 

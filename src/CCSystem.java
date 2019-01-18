@@ -19,17 +19,15 @@
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.geom.Line2D;
-import java.util.List;
 import java.awt.event.*;
+import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.concurrent.ThreadLocalRandom;
 
 /*
  * A class representing a visible Cartesian coordinate system.
@@ -53,47 +51,24 @@ import java.util.concurrent.ThreadLocalRandom;
  * The system can contain objects such as lines, points and polygons.
  * Link: http://javaceda.blogspot.com/2010/06/draw-cartesian-coordinate-system-in.html (help with conceptual understanding)
  * https://docs.oracle.com/javase/tutorial/2d/geometry/strokeandfill.html(Understanding how to use java stroke)
- *
- *
  */
 public class CCSystem extends JPanel {
-
-
     //region Class Variables
     /* Some visual options */
-    private Paint axisXPaint;
-    private Paint axisYPaint;
-    private Paint gridXPaint;
-    private Paint gridYPaint;
-    private Paint unitXPaint;
-    private Paint unitYPaint;
-
-    private Stroke axisXStroke;
-    private Stroke axisYStroke;
-    private Stroke gridXStroke;
-    private Stroke gridYStroke;
-    private Stroke unitXStroke;
-    private Stroke unitYStroke;
-
-    private boolean niceGraphics;
-    /* End of visual options */
+    private Paint axisXPaint, axisYPaint, gridXPaint, gridYPaint, unitXPaint, unitYPaint;
+    private Stroke axisXStroke, axisYStroke, gridXStroke, gridYStroke, unitXStroke, unitYStroke;
 
     /* The number of grid lines between each unit line */
     private double gridRatio;
 
     /* Define the range of the visible xy-plane */
-    private double minX;
-    private double minY;
-    private double maxX;
-    private double maxY;
+    private double minX, minY, maxX, maxY;
 
     /* The length of the domain of x and y */
-    private double distX;
-    private double distY;
+    private double distX, distY;
 
     /* The ratio between system 1 and system 2 */
-    private double xscale;
-    private double yscale;
+    private double xscale, yscale;
 
     /* The distance between each unit line, in pixels */
     private int ulScale;
@@ -141,7 +116,6 @@ public class CCSystem extends JPanel {
         unitYStroke = new BasicStroke(1f);
 
         gridRatio = 5;
-        niceGraphics = true;
         ulScale = 65;
         ulSize = 4;
 
@@ -152,14 +126,6 @@ public class CCSystem extends JPanel {
         addMouseListener(mouseListener);
         addMouseMotionListener((MouseMotionListener) mouseListener);
         addMouseWheelListener(mouseWheelListener);
-    }
-
-    /* Move the visible area relevant to the current position. */
-    private void drag(double moveX, double moveY) {
-        minX += moveX;
-        maxX += moveX;
-        minY += moveY;
-        maxY += moveY;
     }
 
     /* Draw the axes and unit lines in the best looking way possible for the given x- and y-ranges. */
@@ -190,8 +156,11 @@ public class CCSystem extends JPanel {
         g2d.setColor(Color.black);
         g2d.setStroke(new BasicStroke(0.1f));
 
-        drawXGridLines(g2d);
-        drawYGridLines(g2d);
+        /* Draw vertical grid lines. */
+        drawXGridLines(g2d, gridRatio, gridXStroke, gridXPaint);
+
+        /* Draw horizontal grid lines. */
+        drawYGridLines(g2d, gridRatio, gridYStroke, gridYPaint);
     }
 
     /* Draw one vertical grid line. */
@@ -200,11 +169,6 @@ public class CCSystem extends JPanel {
         int y1 = translateY(minY);
         int y2 = translateY(maxY);
         g2d.drawLine(x, y1, x, y2);
-    }
-
-    /* Draw vertical grid lines. */
-    private void drawXGridLines(Graphics2D g2d) {
-        drawXGridLines(g2d, gridRatio, gridXStroke, gridXPaint);
     }
 
     /**
@@ -230,12 +194,7 @@ public class CCSystem extends JPanel {
         g2d.drawLine(x1, y, x2, y);
     }
 
-    /* Draw horizontal grid lines. */
-    private void drawYGridLines(Graphics2D g2d) {
-        drawYGridLines(g2d, gridRatio, gridYStroke, gridYPaint);
-    }
-
-    /**
+   /**
      * Draw horizontal grid lines a given amount of times between each unit line
      * Use the given stroke and paint to draw the grid lines.
      */
@@ -256,10 +215,6 @@ public class CCSystem extends JPanel {
         }
     }
 
-    public void removeSeries(String series){
-        dSource.remove(series);
-    }
-
     public void clearAll(){
         dSource.clear();
         repaint();
@@ -273,7 +228,7 @@ public class CCSystem extends JPanel {
         g2d.setStroke(new BasicStroke(1f));
         for(JDataSeries ds: dSource.values()){
             g2d.setPaint(ds.getSeriesColor());
-            List<JPoint> pts = new ArrayList(ds.getDataset());
+            List<Point2D.Double> pts = new ArrayList(ds.getDataset());
             for (int i=0; i<pts.size()-1; i++){
                 int x1 = translateX(pts.get(i).getX());
                 int y1 = translateY(pts.get(i).getY());
@@ -400,7 +355,7 @@ public class CCSystem extends JPanel {
         Graphics2D g2d = (Graphics2D) g;
         updatePosition();
 
-        if (niceGraphics) g2d.addRenderingHints(getNiceGraphics());
+        g2d.addRenderingHints(getNiceGraphics());
 
         drawPoints(g2d);
 
@@ -479,7 +434,13 @@ public class CCSystem extends JPanel {
         maxY += zoomY;
     }
 
-
+    /* Move the visible area relevant to the current position. */
+    private void drag(double moveX, double moveY) {
+        minX += moveX;
+        maxX += moveX;
+        minY += moveY;
+        maxY += moveY;
+    }
 
     class mouseWheelListener implements MouseWheelListener {
 
