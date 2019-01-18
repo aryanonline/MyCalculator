@@ -32,7 +32,7 @@ public abstract class Operator {
     public static final int PRECEDENCE_UNARY_PLUS = PRECEDENCE_UNARY_MINUS;
 
     //Array that contains a set of allowed expression operators
-    public static final char[] ALLOWED_OPERATOR_CHARS = { '+', '-', '*', '/', '%', '^', '!', '#','§', '$', '&', ';', ':', '~', '<', '>', '|', '='};
+    public static final char[] ALLOWED_OPERATOR_CHARS = { '+', '-', '*', '/', '%', '^', '!', '<', '>', '|', '='};
 
     protected final int numOperands;
     protected final boolean leftAssociative;
