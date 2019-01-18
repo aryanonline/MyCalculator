@@ -52,7 +52,7 @@ import java.util.Map;
  * Link: http://javaceda.blogspot.com/2010/06/draw-cartesian-coordinate-system-in.html (help with conceptual understanding)
  * https://docs.oracle.com/javase/tutorial/2d/geometry/strokeandfill.html(Understanding how to use java stroke)
  */
-public class CCSystem extends JPanel {
+public class CartesianChartPanel extends JPanel {
     //region Class Variables
     /* Some visual options */
     private Paint axisXPaint, axisYPaint, gridXPaint, gridYPaint, unitXPaint, unitYPaint;
@@ -95,7 +95,7 @@ public class CCSystem extends JPanel {
 
     //endregion
 
-    public CCSystem(double minX, double minY, double maxX, double maxY) {
+    public CartesianChartPanel(double minX, double minY, double maxX, double maxY) {
         this.minX = minX;
         this.minY = minY;
         this.maxX = maxX;

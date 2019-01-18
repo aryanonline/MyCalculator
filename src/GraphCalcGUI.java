@@ -25,7 +25,7 @@ public class GraphCalcGUI extends JFrame {
     //Panel that allows user to select equation
     private JPanel jPnlSetPlotter = new JPanel(new BorderLayout());
     //Panel to allow for the display of the chart
-    private CCSystem jPnlChartPanel;
+    private CartesianChartPanel jPnlChartPanel;
 
     //Function button
     private JButton jBtnZoomIn = new JButton("");
@@ -383,8 +383,8 @@ public class GraphCalcGUI extends JFrame {
         jPnlSetPlotter.add(p2, BorderLayout.SOUTH);
     }
 
-    private CCSystem createChartPanel(){
-        jPnlChartPanel = new CCSystem(0.0, 0.0, 10.0, 10.0);
+    private CartesianChartPanel createChartPanel(){
+        jPnlChartPanel = new CartesianChartPanel(0.0, 0.0, 10.0, 10.0);
         return jPnlChartPanel;
     }
 
@@ -397,7 +397,7 @@ public class GraphCalcGUI extends JFrame {
         jTxtPoints.setText("");
     }
 
-    private void zoomChartAxis(CCSystem cp, boolean increase){
+    private void zoomChartAxis(CartesianChartPanel cp, boolean increase){
         if(increase){
             jPnlChartPanel.zoom(2,2);
         }else{
