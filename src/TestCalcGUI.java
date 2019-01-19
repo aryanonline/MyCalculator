@@ -29,9 +29,11 @@ Use of Data structures such as Maps and hashMaps
 Use ... operator to create an array that is dynamic. The ... operator creates an array for a given set of of inputs
 Use of static blocks that will be initialized first as soon as the class is initialized
 
-
-
-
+Areas of concern:
+Graph is not continuous.
+Only a defined set of equations are able to be graphed
+When graph has been made user has to drag around their chart to find their graph rather than being directed straight to the graph
+The user has not been provided with a recently deleted button to be able to recover deleted equations
  */
 
 public class TestCalcGUI {
