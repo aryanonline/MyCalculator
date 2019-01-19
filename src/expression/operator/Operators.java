@@ -8,8 +8,8 @@ Description: An abstract class representing the different type of operators alon
 sub classes to get an built in operator
 Features: None
 Major Skills: Creating an array of abstract to define each type of operator. Use of static block to initialize each
-operator index with their parent function Operator and overriding the parent classes abstract methods for each sub
-index. Use of switch statements to return the built in operator from the array given a symbol of the operator
+operator index with their parent function Operator and overriding the parent classes abstract methods for each
+function index value. Use of switch statements to return the built in operator from the array given a symbol of the operator
 Areas of concern: None
 */
 
@@ -27,7 +27,8 @@ public abstract class Operators {
     //Array of type operator to store all the operators and define their methods
     private static final Operator[] builtinOperators = new Operator[8];
 
-    //static block to assign each index with defined method
+    //static block to assign each index with defined method. Will be called first as soon as class has been instantiated
+    //in line initialization with abstract class and overriding the methods in line
     static {
         builtinOperators[INDEX_ADDITION]= new Operator("+", 2, true, Operator.PRECEDENCE_ADDITION) {
             @Override

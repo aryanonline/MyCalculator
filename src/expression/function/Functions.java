@@ -42,7 +42,8 @@ public class Functions {
     //array of abstract to classes to be later on used to assign set of defined functions with their values
     private static final Function[] builtinFunctions = new Function[24];
 
-    //Use of static block to create in line initialization of abstract class and overriding their methods in line
+    // static block which be called first as soon as the class has been initialized
+    // line initialization of abstract class and overriding their methods in line
     //for each index
     static {
         //sin function
