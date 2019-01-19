@@ -10,7 +10,7 @@ Major Skills: Use of inheritance by allowing the Variable Token to extend the to
 Areas of concern: None
 */
 public class VariableToken extends Token {
-    //a variabel to represent the name of the function
+    //a variable to represent the name of the function
     private final String name;
     //constructor method that takes in the anem of the vriable
     public VariableToken(String name) {

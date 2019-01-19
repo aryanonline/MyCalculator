@@ -5,15 +5,15 @@ Date: 18 January 2019
 Course Code: ICS4U1-01
 To: Mr.Fernandes
 Description: Class representing the builtin functions available for use in expressions
-Features: Each function has been defined using a set of of values so that each functiion can be stored using an array
+Features: Each function has been defined using a set of of values so that each function can be stored using an array
 of the abstract function class. I am creating an instance of the function class for each index in the array
 Major Skills: Creation of an array of abstract class Function to store each builtin function, rather than intializing
-everytime. Use of a static block to assign each function with their own array index and overriding their abstract method.
-Use of switch statment to return the builtin fuction given the name of the function
+every time. Use of a static block to assign each function with their own array index and overriding their abstract method.
+Use of switch statement to return the builtin function given the name of the function
 Areas of concern: None
 */
 public class Functions {
-    //Defined set of functions within scientific calculator
+    //Defined set of functions with their index values
     private static final int INDEX_SIN = 0;
     private static final int INDEX_COS = 1;
     private static final int INDEX_TAN = 2;

@@ -15,10 +15,10 @@ Name: Aryan Singh
 Date: 18 January 2019
 Course Code: ICS4U1-01
 To: Mr.Fernandes
-Description: A class that, using a given string tokenizes the string into its tokens, and returns a list of the tokens
+Description: A class that, using a given string tokenize the string into its tokens, and returns a list of the tokens
 https://www.baeldung.com/java-stringtokenizer (understanding how to tokenize a given string)
 Features: None
-Major Skills: Use of switch staements to distinguish from tokens. Use of if and else statements to distigusish
+Major Skills: Use of switch statements to distinguish from tokens. Use of if and else statements to distigusish
 between the similar properties of some tokens. Use of while loop to loop through all tokens within tokenizer.
 Use of list to create a list to store tokens
 Areas of concern: None

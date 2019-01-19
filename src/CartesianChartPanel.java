@@ -26,24 +26,21 @@ import java.util.HashMap;
 import java.util.Map;
 
 /*
- * A class representing a Cartesian Chart Panel.
- * In this class there are two coordinate systems:
- *
- * 1. A two-dimensional coordinate system for Java2D where x lies in the
- *    interval [0, window width] and y lies in the interval
- *    [0, window height] where the units of both x and y are pixels.
- *
- * 2. Another two-dimensional coordinate system where x and y can lie in
- *    cartesian plane.
- *
- * Throughout this class, Point is used to represent a point in system 1
- * while Point2D is used to represent a point in system 2.
- *
- * The translate methods are used to translate between the two systems.
- *
- * The system can contain objects such as lines, points and polygons.
- * Link: http://javaceda.blogspot.com/2010/06/draw-cartesian-coordinate-system-in.html (help with conceptual understanding)
- * https://docs.oracle.com/javase/tutorial/2d/geometry/strokeandfill.html(Understanding how to use java stroke)
+Name: Aryan Singh
+Date: 18 January 2019
+Description: This class is used to generate two coordinate systems a two dimensional coordinate system for graphing
+where the x lies in the interval [0, window width] and the y lies in the interval [0, window height] and another
+two dimensional coordinate system where the x and y can lie in the cartesian plane. Throughout this class Point is used
+to represent a point in the first coordinate system, while Point2D is used to represent a point in second coordinate
+system. The translate methods are used to translate between the two coordinate systems.
+Links: Link: http://javaceda.blogspot.com/2010/06/draw-cartesian-coordinate-system-in.html (help with conceptual understanding)
+https://docs.oracle.com/javase/tutorial/2d/geometry/strokeandfill.html(Understanding how to use java stroke)
+MajorSkills: Use of for loops and selection structures like if and else statements. Use of mouseListeners. Use of switch
+statements
+Use of Map and HashMaps to create key-series pair and to disallow for any duplicate JSerires
+Areas of Concern: None
+
+
  */
 public class CartesianChartPanel extends JPanel {
     //region Class Variables
@@ -82,22 +79,26 @@ public class CartesianChartPanel extends JPanel {
     private Point2D.Double origin2d;
     private Point origin;
 
+    //Use of map to create a name-series pair
+    //Having the dSource as a HashMap allows for no duplicate series
+    //so their are no duplicate graphs when plotted
     private Map<String, JDataSeries> dSource = new HashMap<>();
 
     //endregion
     public CartesianChartPanel(double minX, double minY, double maxX, double maxY) {
+        //setting the axis upper and lower value
         this.minX = minX;
         this.minY = minY;
         this.maxX = maxX;
         this.maxY = maxY;
-
+        //setting the color of the axis
         axisXPaint = Color.black;
         axisYPaint = Color.black;
         gridXPaint = Color.black;
         gridYPaint = Color.black;
         unitXPaint = Color.black;
         unitYPaint = Color.black;
-
+        //setting the color depth of all the axis lines
         axisXStroke = new BasicStroke(1.3f);
         axisYStroke = new BasicStroke(1.3f);
         gridXStroke = new BasicStroke(0.1f);
@@ -169,7 +170,7 @@ public class CartesianChartPanel extends JPanel {
         g2d.drawLine(x1, y, x2, y);
     }
 
-    /**
+    /*
      * Draw vertical grid lines a given amount of times between each unit line.
      * Use the given stroke and paint to draw the grid lines.
      */
@@ -184,7 +185,7 @@ public class CartesianChartPanel extends JPanel {
         for (int i = idx; i <= end; i++) drawXGridLine(g2d, i*vbu);
     }
 
-   /**
+   /*
      * Draw horizontal grid lines a given amount of times between each unit line
      * Use the given stroke and paint to draw the grid lines.
      */
@@ -199,12 +200,14 @@ public class CartesianChartPanel extends JPanel {
         for (int i = idx; i <= end; i++) drawYGridLine(g2d, i*vbu);
     }
 
+    //adding another more series. Used when displaying multiple chart on the same axis
     public void addSeries(JDataSeries ... series){
         for(JDataSeries sr : series) {
             dSource.put(sr.getSeriesName(), sr);
         }
     }
 
+    //used in clearing the chart
     public void clearAll(){
         dSource.clear();
         repaint();
@@ -214,6 +217,7 @@ public class CartesianChartPanel extends JPanel {
         return dSource.size();
     }
 
+    //drawing the points of the graph
     private void drawPoints(Graphics2D g2d){
         g2d.setStroke(new BasicStroke(1f));
         for(JDataSeries ds: dSource.values()){
@@ -267,7 +271,6 @@ public class CartesianChartPanel extends JPanel {
         if (val == 0.0) return;
 
         String strVal = val.toString();
-        //else strVal = Double.toString(val.doubleValue());
 
         Point2D.Double p2d = new Point2D.Double(origin2d.x, val);
         Point p = translate(p2d);
@@ -300,6 +303,8 @@ public class CartesianChartPanel extends JPanel {
         else return scale;
     }
 
+    //this helps to get a nice looking graph. This code has been understood from a site and has been
+    //tested manually with each type of rendering hint
     private RenderingHints getNiceGraphics() {
         RenderingHints rh = new RenderingHints(null);
         rh.put(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
@@ -396,6 +401,7 @@ public class CartesianChartPanel extends JPanel {
         origin = translate(origin2d);
     }
 
+    //zooming
     public void zoom(double zoomX, double zoomY){
         minX -= zoomX;
         maxX += zoomX;
@@ -414,6 +420,7 @@ public class CartesianChartPanel extends JPanel {
     class mouseWheelListener implements MouseWheelListener {
 
         @Override
+        //zooming in and out depending on the mouse
         public void mouseWheelMoved(MouseWheelEvent e) {
             int units = e.getUnitsToScroll();
 

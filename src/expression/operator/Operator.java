@@ -70,7 +70,7 @@ public abstract class Operator {
     public boolean isLeftAssociative() {
         return leftAssociative;
     }
-    //return the precendence value for the operator
+    //return the precedence value for the operator
     public int getPrecedence() {
         return precedence;
     }

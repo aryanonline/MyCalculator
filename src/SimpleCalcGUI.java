@@ -365,7 +365,7 @@ public class SimpleCalcGUI extends JFrame {
             tokenArray.clear();
         }
         catch (IllegalArgumentException ex){
-            jtaResult.setText(ex.toString());
+            jtaResult.setText(ex.getMessage());
         }
     }
 }

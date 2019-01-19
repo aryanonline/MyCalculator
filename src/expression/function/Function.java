@@ -15,7 +15,7 @@ public abstract class Function {
     private final String name;
     private final int numArguments;
 
-    //Contructor method
+    //Constructor method
     public Function(String name, int numArguments) {
         //checks if the passed on number of arguments is valid
         if (numArguments < 0) {

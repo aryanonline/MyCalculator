@@ -1,4 +1,4 @@
-import expression.tokenize.Token;
+
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -7,7 +7,14 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.*;
-
+/*
+Name: Aryan Singh
+Date: 18 January 2019
+Description: A simple utility class that has static methods that are called from other classes
+Features: Use of GridBagLayout to allow for buttons and other components to be able to occupy more than one column and row
+MajorSkills: Use of buffered image and ImageIcons. Use of try and catch statements
+Areas of concern: None
+ */
 public final class CalcUtils {
 
     //common method to add components to GridBagLayout

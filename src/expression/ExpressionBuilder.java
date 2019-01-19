@@ -10,11 +10,18 @@ import java.util.*;
 /*
 Name: Aryan Singh
 Date: 18 January 2019
+Course Code: ICS4U1-01
 To: Mr.Fernandes
-Accomplishments:
-Challenges:
-Concerns:
- */
+Description: A class used to convert a given string expression from infix to reversed polish notation
+Features: Use of the shunting yard algorithm (http://www.learn4master.com/data-structures/stack/convert-infix-notation-to-reverse-polish-notation-java)
+Major Skills: Use of HashSet to create a array of variableNames that do not contain any duplicates. Use of for loop to check if
+a variable has the same name as a function. Use of stack to store operator token. Use of array list to store the reversed
+polish notation. Use of for loop to loop through all the tokens. Use of switch statements to check for each check for each token.
+Use of if and else statements to get add an operator from the stack into the output depending on the precedence of the
+operator.
+Areas of concern: None
+*/
+
 public class ExpressionBuilder {
 
     private final String expression;
@@ -33,12 +40,7 @@ public class ExpressionBuilder {
         //creates a new Hash set for vriable names variable with a capacity of 1
         this.variableNames = new HashSet<>(1);
     }
-    //Declare the variables names used in the expression
-    public ExpressionBuilder variables(String ... variableNames) {
-        Collections.addAll(this.variableNames, variableNames);
-        return this;
-    }
-    //declare a variable used in the expression
+    //Adding the variable name into HashSet
     public ExpressionBuilder variable(String var) {
         this.variableNames.add(var);
         return this;
@@ -48,7 +50,7 @@ public class ExpressionBuilder {
         if (expression.length() == 0) {
             throw new IllegalArgumentException("The expression can not be empty");
         }
-        /* Check if there are duplicate vars/functions */
+        //if a variable has the same name as a function
         for (String var : variableNames) {
             if (Functions.getBuiltinFunction(var) != null) {
                 throw new IllegalArgumentException("A variable can not have the same name as a expression.function [" + var + "]");

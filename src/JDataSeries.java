@@ -2,10 +2,20 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.*;
 import java.util.List;
+/*
+Name: Aryan Singh
+Date: 18 January 2019
+Description: This creates a series that has all of the information of a graph its coordinates,domain,etc
+Features: None
+MajorSkills: Use of selection structures to error check the domain and range of the graph. Use of List to store points.
+https://www.developer.com/net/vb/article.php/626081/Java-2D-Graphics-The-Point2D-Class.htm#_Methods_of_the
+ */
 
 public class JDataSeries {
+    //declaration of variables
     private String seriesName;
     private Color seriesColor;
+    //List to store in all key points for graph
     private List<Point2D.Double> dataset;
     private double lowerBoundX;
     private double upperBoundX;
@@ -19,24 +29,15 @@ public class JDataSeries {
             dataset = new ArrayList<>();
     }
 
+    //adding points to the datseroes
     public void add(double x, double y){
         setBounds(x, y);
         getDataset().add(new Point2D.Double(x, y));
     }
 
-    public void add(Point2D.Double ... points){
-        for(Point2D.Double p: points) {
-            setBounds(p.getX(), p.getY());
-            getDataset().add(new Point2D.Double(p.getX(), p.getY()));
-        }
-    }
-
+    //getters and setters
     public List<Point2D.Double> getDataset() {
         return dataset;
-    }
-
-    public void setDataset(List<Point2D.Double> dataset) {
-        this.dataset = dataset;
     }
 
     public String getSeriesName() {

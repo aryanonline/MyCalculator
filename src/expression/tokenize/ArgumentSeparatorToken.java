@@ -6,7 +6,7 @@ Course Code: ICS4U1-01
 To: Mr.Fernandes
 Description: This class is used to represent a separator token class
 Features: None
-Major Skills: Use of inheritance by havig the class extend the abstract class Token
+Major Skills: Use of inheritance by having the class extend the abstract class Token
 Areas of concern: None
 */
 

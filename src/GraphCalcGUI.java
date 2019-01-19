@@ -256,7 +256,6 @@ public class GraphCalcGUI extends JFrame {
         double spread = valUpper - valLower;
         double increments = spread/valPoints;
 
-        //equation.clear();
         for(double i=valLower; i<=valUpper; i += increments){
             double result = exp.setVariable("X", i).evaluate();
             DecimalFormat formatter = new DecimalFormat("####.##");
@@ -266,17 +265,16 @@ public class GraphCalcGUI extends JFrame {
     }
 
     private void setUI(){
+        //JLabels
         JLabel jLblFxType = new JLabel("Select F(x) Type: ");
         JLabel jLblFx = new JLabel("Select from saved functions : ");
-        JLabel spacer = new JLabel(" ");
         JLabel jLblA = new JLabel("A");
         JLabel jLblB = new JLabel("B");
         JLabel jLblC = new JLabel("C");
         JLabel jLblXRange = new JLabel("Domain Range: ");
         JLabel jLblBounds = new JLabel("<=  X  <=");
         JLabel jLblPoints = new JLabel("Number of Points: ");
-
-
+        //setting the JLabels
         setLabelDisplay(jLblFxType, SwingConstants.LEFT);
         setLabelDisplay(jLblFx, SwingConstants.LEFT);
         setLabelDisplay(jLblA, SwingConstants.CENTER);
@@ -285,20 +283,15 @@ public class GraphCalcGUI extends JFrame {
         setLabelDisplay(jLblXRange, SwingConstants.LEFT);
         setLabelDisplay(jLblBounds, SwingConstants.CENTER);
         setLabelDisplay(jLblPoints, SwingConstants.LEFT);
-
-
         //Chart Panel Settings
         jPnlChartPanel = createChartPanel();
         jPnlChartPanel.setOpaque(true);
         jPnlChartPanel.setPreferredSize(new Dimension(550, 500));
-
-
         //Plotter Panel Settings
         jPnlSetPlotter.setOpaque(true);
         jPnlSetPlotter.setBackground(new Color(51,51,51));
         jPnlSetPlotter.setPreferredSize(new Dimension(250, 500));
         jPnlSetPlotter.setBorder(BorderFactory.createEmptyBorder(0, 10 ,0, 10));
-
         //Plotter Center Panel
         JPanel p1 = new JPanel(new GridBagLayout());
         p1.setOpaque(true);
@@ -387,6 +380,7 @@ public class GraphCalcGUI extends JFrame {
         return jPnlChartPanel;
     }
 
+    //clearing all of the textfields
     private void clearSettings(){
         jTxtA.setText("");
         jTxtB.setText("");
@@ -396,6 +390,7 @@ public class GraphCalcGUI extends JFrame {
         jTxtPoints.setText("");
     }
 
+    //zopming in and out
     private void zoomChartAxis(CartesianChartPanel cp, boolean increase){
         if(increase){
             jPnlChartPanel.zoom(2,2);

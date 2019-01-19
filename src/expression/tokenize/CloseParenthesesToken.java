@@ -4,7 +4,7 @@ Name: Aryan Singh
 Date: 18 January 2019
 Course Code: ICS4U1-01
 To: Mr.Fernandes
-Description: This class is used to represent a close parentheis token
+Description: This class is used to represent a close parenthesis token
 Features: None
 Major Skills: Use of inheritance by having the class extend the abstract class Token
 Areas of concern: None
