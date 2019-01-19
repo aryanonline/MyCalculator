@@ -6,10 +6,14 @@ Course Code: ICS4U1-01
 To: Mr.Fernandes
 Description: A class that represents an expression that can have variables and contains a method to evaluate the expression
 Features: None
-Major Skills: Use of map to use a key-value pair for variables. Use of hash map to disallow the usage of duplicate
-variables. Use of if and else statements to check if a function exists with a variable name. Use of for loop to loop through
-all the array of tokens. Use of stack to store numbers and store final result. Use of if and else statements to distinguish
-number tokens from operator tokens and add the number tokens into the stack, for evaluation. Use of downcasting techniques to cast
+Major Skills:
+- Use of map to use a key-value pair for variables. Use of hash map to disallow the usage of duplicate
+variables.
+- Use of if and else statements to check if a function exists with a variable name. Use of for loop to loop through
+all the array of tokens.
+- Use of stack to store numbers and store final result. Use of if and else statements to distinguish
+number tokens from operator tokens and add the number tokens into the stack, for evaluation.
+- Use of downcasting techniques to cast
 a generalized token into a specific token type.
 Areas of concern: None
 */

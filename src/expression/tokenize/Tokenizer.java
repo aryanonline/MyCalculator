@@ -15,7 +15,8 @@ Name: Aryan Singh
 Date: 18 January 2019
 Course Code: ICS4U1-01
 To: Mr.Fernandes
-Description: A class that, using a given string tokenize the string into its tokens, and returns a list of the tokens
+Description: A class that, using a given string converts the string into its tokens, which are either of number, operator,
+function, parenthesis open, parenthesis close, variable, and separator and returns a list of the tokens
 https://www.baeldung.com/java-stringtokenizer (understanding how to tokenize a given string)
 Features: None
 Major Skills: Use of switch statements to distinguish from tokens. Use of if and else statements to distigusish

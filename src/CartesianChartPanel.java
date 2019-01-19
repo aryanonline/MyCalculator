@@ -35,7 +35,8 @@ to represent a point in the first coordinate system, while Point2D is used to re
 system. The translate methods are used to translate between the two coordinate systems.
 Links: Link: http://javaceda.blogspot.com/2010/06/draw-cartesian-coordinate-system-in.html (help with conceptual understanding)
 https://docs.oracle.com/javase/tutorial/2d/geometry/strokeandfill.html(Understanding how to use java stroke)
-MajorSkills: Use of for loops and selection structures like if and else statements. Use of mouseListeners. Use of switch
+MajorSkills:
+Use of for loops and selection structures like if and else statements. Use of mouseListeners. Use of switch
 statements
 Use of Map and HashMaps to create key-series pair and to disallow for any duplicate JSerires
 Areas of Concern: None

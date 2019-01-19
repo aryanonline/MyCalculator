@@ -12,7 +12,7 @@ Name: Aryan Singh
 Date: 18 January 2019
 Course Code: ICS4U1-01
 To: Mr.Fernandes
-Description: A class used to convert a given string expression from infix to reversed polish notation
+Description: A class used to convert a given string expression from infix to post fix (reversed polish notation).
 Features: Use of the shunting yard algorithm (http://www.learn4master.com/data-structures/stack/convert-infix-notation-to-reverse-polish-notation-java)
 Major Skills: Use of HashSet to create a array of variableNames that do not contain any duplicates. Use of for loop to check if
 a variable has the same name as a function. Use of stack to store operator token. Use of array list to store the reversed

@@ -5,7 +5,7 @@ import java.util.List;
 /*
 Name: Aryan Singh
 Date: 18 January 2019
-Description: This creates a series that has all of the information of a graph its coordinates,domain,etc
+Description: This class holds a series data from one equation that has all of the information of a graph its coordinates,domain,etc
 Features: None
 MajorSkills: Use of selection structures to error check the domain and range of the graph. Use of List to store points.
 https://www.developer.com/net/vb/article.php/626081/Java-2D-Graphics-The-Point2D-Class.htm#_Methods_of_the

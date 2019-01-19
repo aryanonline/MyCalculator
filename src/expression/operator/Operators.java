@@ -7,14 +7,14 @@ To: Mr.Fernandes
 Description: An abstract class representing the different type of operators along with their index numbers. Can be used by
 sub classes to get an built in operator
 Features: None
-Major Skills: Creating an array of abstract to define each type of operator. Use of static block to intialize each
-operator index with their parent function Operator and overriding the parent classes abstract mathods for each sub
+Major Skills: Creating an array of abstract to define each type of operator. Use of static block to initialize each
+operator index with their parent function Operator and overriding the parent classes abstract methods for each sub
 index. Use of switch statements to return the built in operator from the array given a symbol of the operator
 Areas of concern: None
 */
 
 public abstract class Operators {
-    //different operators and their index numbers
+    //different operators and their index numbers (these are only the values not actual operators)
     private static final int INDEX_ADDITION = 0;
     private static final int INDEX_SUBTRACTION = 1;
     private static final int INDEX_MULTIPLICATION = 2;

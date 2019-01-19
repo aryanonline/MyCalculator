@@ -13,7 +13,7 @@ Use of switch statement to return the builtin function given the name of the fun
 Areas of concern: None
 */
 public class Functions {
-    //Defined set of functions with their index values
+    //Defined set of functions with their index values (these are values not actually the functions)
     private static final int INDEX_SIN = 0;
     private static final int INDEX_COS = 1;
     private static final int INDEX_TAN = 2;
@@ -42,7 +42,8 @@ public class Functions {
     //array of abstract to classes to be later on used to assign set of defined functions with their values
     private static final Function[] builtinFunctions = new Function[24];
 
-    //Assigning each index as type of Function (parent class) with their function name and defining their apply method
+    //Use of static block to create in line initialization of abstract class and overriding their methods in line
+    //for each index
     static {
         //sin function
         builtinFunctions[INDEX_SIN] = new Function("sin") {
