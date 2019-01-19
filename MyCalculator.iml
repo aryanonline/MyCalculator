@@ -8,6 +8,5 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="RUNTIME" name="lib" level="project" />
-    <orderEntry type="library" exported="" name="org.jfree:jfreechart:1.0.19" level="project" />
   </component>
 </module>
